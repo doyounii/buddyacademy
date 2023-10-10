@@ -389,6 +389,16 @@
           <mainClass>org.test.int1.Main</mainClass>
         </configuration>
       </plugin>
+
+<!--      xml을 java로 설정하기-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.3</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>
