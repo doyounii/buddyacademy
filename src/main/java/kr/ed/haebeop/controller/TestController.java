@@ -47,4 +47,16 @@ public class TestController {
         testService.insert(test);
         return test;
     }
+
+    @GetMapping("testInsert2")
+    public String testInsert2(Model model) throws Exception {
+        return "/test/testInsert2";
+    }
+
+    @PostMapping("testInsert2")
+    @ResponseBody
+    public Test testInsertPro2(@ModelAttribute Test test) throws Exception{
+        testService.insert(test);
+        return test;
+    }
 }

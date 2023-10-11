@@ -16,8 +16,8 @@ import org.springframework.web.servlet.view.JstlView;
 public class ServletContext implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources");
-        registry.addResourceHandler("/ajax/**").addResourceLocations("/WEB-INF/views/ajax");
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+            registry.addResourceHandler("/ajax/**").addResourceLocations("/WEB-INF/views/ajax");
         registry.addResourceHandler("/admin/**").addResourceLocations("/WEB-INF/views/admin");
         registry.addResourceHandler("/api/**").addResourceLocations("/WEB-INF/views/api");
         registry.addResourceHandler("/board/**").addResourceLocations("/WEB-INF/views/board");
