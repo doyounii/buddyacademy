@@ -60,7 +60,7 @@
             <li class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">수강신청</a>
               <div class="navbar-dropdown">
-                <a class="navbar-item" href="${path0 }/course/courseList">강의 게시판</a>
+                <a class="navbar-item" href="${path0 }/course/list">강의 게시판</a>
                 <a class="navbar-item" href="#">개강 일정</a>
               </div>
             </li>

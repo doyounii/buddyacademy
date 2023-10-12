@@ -6,11 +6,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Configuration
 @EnableWebSecurity
 public class SecurityConfig {
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    public BCryptPasswordEncoder pwdEncoder() {return new BCryptPasswordEncoder();}
     //기본 사용 설정
 }

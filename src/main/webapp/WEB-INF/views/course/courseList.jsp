@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="path0" value="${pageContext.request.contextPath }"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +13,9 @@
 </head>
 <body>
 <h3>하이루</h3>
-<c:forEach var="test" items="${getTestList }">
-    <p>${test.num }</p>
-    <p>${test.title }</p>
+<c:forEach var="course" items="${getCourseList }">
+    <a href="${path0 }/course/getCourse?cno=${course.cno }">${course.course_name }</a>
+    <p>${course.price }</p>
     <hr>
 </c:forEach>
 </body>

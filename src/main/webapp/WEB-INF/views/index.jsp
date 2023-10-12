@@ -9,6 +9,19 @@
 <head>
     <title>해법학원</title>
     <jsp:include page="./include/head.jsp" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@2/css/all.min.css" />
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+
 </head>
 <body>
 <!-- Header Start -->
