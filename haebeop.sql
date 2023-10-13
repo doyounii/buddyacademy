@@ -94,7 +94,7 @@ INSERT INTO course VALUES(DEFAULT, "독해하이라이트", 120000, "2023-10-20"
 
 -- 교재 - 교재코드, 교재명, 교재목차, 출판사, 출판일, 저자, 가격, 기타메모, 
 CREATE TABLE book (
-	bno INT AUTO_INCREMENT PRIMARY KEY, 
+	bno INT AUTO_INCREMENT PRIMARY KEY,
 	book_name VARCHAR(100) NOT NULL,
 	publisher VARCHAR(50) NOT NULL,
 	author VARCHAR(50) NOT NULL,
