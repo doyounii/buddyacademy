@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <title>${course.course_name }</title>
+    <title>${course.course_name } 수강신청</title>
     <!-- 헤드 부분 인클루드 -->
     <jsp:include page="../include/head.jsp"></jsp:include>
     <style>
@@ -90,7 +90,6 @@
             padding-left: 21px;
         }
         .menu .menu-list {
-            position: fixed;
             padding: 30px;
         }
         .conwrap .box {
@@ -225,15 +224,16 @@
                 <div class="card-content">
                     <div class="media">
                         <div class="media-content has-text-centered">
-                            <h1 class="title article-title">${course.course_name }</h1>
+                            <h1 class="title article-title">${course.course_name } 수강신청</h1>
                         </div>
                     </div>
                     <hr>
 
-                    <div class="content article-body">
+                    <div class="content article-body" style="min-height: 400px">
                         <p style="padding: 20px 100px; min-height: 100px; font-size: 18px;">
+                            결제 항목
                             <br>
-                            ${course.content }
+                            ${course.course_name }  |  ${course.teacher_name } 강사
                         </p>
                     </div>
                 </div>
@@ -242,9 +242,9 @@
         </div>
         <div class="column is-4">
             <aside class="menu">
-				<!-- <span class="box has-text-white has-text-weight-semibold has-text-centered is-size-5" style="color: black;">
-					과정정보
-				</span> -->
+                <!-- <span class="box has-text-white has-text-weight-semibold has-text-centered is-size-5" style="color: black;">
+                    과정정보
+                </span> -->
                 <div class="box view_info has-text-white has-text-weight-semibold has-text-centered is-size-5">
                     <span class="course" style="color: black;">과정정보</span>
                     <dl>
@@ -268,47 +268,51 @@
                     <li>
                         <!-- 수강료 안내 -->
                         <div class="price_in">
-                        <div class="price_scroll mCustomScrollbar _mCS_1 mCS_no_scrollbar">
-                            <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
-                                <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
-                                    <hp class="price_h4">수강료</hp>
-                                    <span class="pointColor price" id="price"><strong id="course_price" class="eng">${course.price}원</strong></span>
-                                </div>
-                            <!--<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
-                                <div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 0px; top: 0px;">
-                                    <div class="mCSB_dragger_bar" style="line-height: 30px;">
+                            <div class="price_scroll mCustomScrollbar _mCS_1 mCS_no_scrollbar">
+                                <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
+                                    <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+                                        <hp class="price_h4">결제상세</hp>
                                     </div>
+                                    <!--<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
+                                        <div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 0px; top: 0px;">
+                                            <div class="mCSB_dragger_bar" style="line-height: 30px;">
+                                            </div>
+                                        </div>
+                                            <div class="mCSB_draggerRail">
+                                            </div>
+                                        </div>
+                                    </div>-->
                                 </div>
-                                    <div class="mCSB_draggerRail">
-                                    </div>
-                                </div>
-                            </div>-->
                             </div>
-                        </div>
                         </div>
                         <!-- 최종 금액 -->
                         <div class="total">
                             <p>
-                                <i>판매금액</i>
+                                <i>강의금액</i>
                                 <b id="sum_price">${course.price }원</b>
                             </p>
-                            <p style="display: flex">
-                                <input type="checkbox" id="book_price" name="book_price" checked>
-                                <label for="book_price"><i> 교재금액</i></label>
-                                <b id="delivery_price">${book.price }원</b>
+                            <p>
+                                <i>교재금액</i>
+                                <b id="book_price">
+                                    <c:if test="${course.price == price}">
+                                        0원
+                                    </c:if>
+                                    <c:if test="${course.price < price}">
+                                        ${book.price }원
+                                    </c:if>
+                                </b>
                             </p>
                             <!--<p>
                                 <i>할인금액</i>
                                 <b id="discount_price" class="red">0원</b>
                             </p>-->
-                            <fmt:formatNumber value="${(book.price +course.price )}" type="number" var="total_price" />
-                            <h4><i>총 결제금액</i><span class="pointColor price"><strong id="total_price" class="eng">${total_price }원</strong></span></h4>
+                            <h4><i>총 결제금액</i><span class="pointColor price"><strong id="total_price" class="eng">${price }원</strong></span></h4>
                         </div>
-                        <!-- 신청 버튼 -->
-                            <div class="applyBtn">
-                                <a href="#" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>장바구니</a>
-                                <a href="${path1 }/course/signIn?price=${total_price }&cno=${course.cno }" id="apply" class="apply bgColor"><i class="fa-solid fa-pencil"></i>수강신청</a>
-                            </div>
+                        <!-- 신청 버튼-->
+                        <div class="applyBtn">
+                            <a href="${path1 }/course/getCourse?cno=${course.cno }" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>취소</a>
+                            <a href="${path1 }/course/signIn?price=${total_price }&cno=${course.cno }" class="apply bgColor"><i class="fa-solid fa-pencil"></i>결제하기</a>
+                        </div>
                     </li>
 
                 </ul>
@@ -317,26 +321,6 @@
     </div>
 </div>
 <script>
-    $(window).scroll(function(){
-        $(".menu-list").css("margin-top",Math.max(-150,0-$(this).scrollTop()));
-    });
-    $(document).ready(function(){
-        $("#book_price").change(function(){
-            if($("#book_price").is(":checked")){
-                $('#total_price').text((${course.price }+${book.price })+'원');
-            }else{
-                $('#total_price').text(${course.price }+'원');
-            }
-        });
-    });
-    $(document).ready(function(){
-        $("#apply").click(function(){
-            if(${course.curr_num == course.total_num }){
-                alert("모집이 마감된 강의입니다.");
-                $(location).attr('href', '${path1 }/course/list');
-            }
-        });
-    });
 
 </script>
 <!-- 푸터 부분 인클루드 -->

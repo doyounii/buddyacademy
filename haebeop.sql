@@ -50,8 +50,7 @@ CREATE TABLE fileboard (
 	f3 VARCHAR(300),
 	regdate DATETIME DEFAULT CURRENT_TIME,
 	id VARCHAR(20) NOT NULL, 
-	visited INT DEFAULT 0;
-	FOREIGN KEY(id) REFERENCES user(id) ON DELETE CASCADE
+	visited INT DEFAULT 0
 );
 
 -- 과목 - 과목코드, 과목명, 과목단가
@@ -62,15 +61,7 @@ CREATE TABLE SUBJECT (
 );
 
 
--- 수강 - 수강코드, 강의코드, 학생아이디, 수강총시간, 수강완료여부
-CREATE TABLE enrol (
-	eno INT AUTO_INCREMENT PRIMARY KEY,
-	subject_name VARCHAR(100) NOT NULL,
-	user_id VARCHAR(20) NOT NULL,
-	total_time INT NOT NULL,
-	complete BOOLEAN NOT NULL DEFAULT 0;
-	FOREIGN KEY(subject_name) REFERENCES SUBJECT(subject_name) ON DELETE CASCADE
-);
+
 
 -- 강사 - 강사코드, 강사명, 연락처, 이메일
 CREATE TABLE teacher (
@@ -93,11 +84,13 @@ CREATE TABLE course (
 	total_num INT NOT NULL, 
 	curr_num INT NOT NULL DEFAULT 0, 
 	teacher_name VARCHAR(50) NOT NULL ,
-	content VARCHAR(3000) NOT NULL,
-	FOREIGN KEY(teacher_name) REFERENCES teacher(tid) ON DELETE CASCADE
+	content VARCHAR(3000) NOT NULL
 );
 
-INSERT INTO course VALUES(DEFAULT, "독해하이라이트", 120000, "2023-10-20", "2023-12-31", 100, DEFAULT, "park");
+SELECT * FROM 
+DROP TABLE course;
+
+INSERT INTO course VALUES(DEFAULT, "독해하이라이트", 120000, "2023-10-20", "2023-12-31", 100, DEFAULT, "park", "d");
 
 -- 교재 - 교재코드, 교재명, 교재목차, 출판사, 출판일, 저자, 가격, 기타메모
 CREATE TABLE book (
@@ -107,8 +100,7 @@ CREATE TABLE book (
 	author VARCHAR(50) NOT NULL,
 	price INT NOT NULL,
 	etc VARCHAR(1000),
-	cno INT NOT NULL,
-	FOREIGN KEY(cno) REFERENCES course(cno) ON DELETE CASCADE
+	cno INT NOT NULL
 );
 INSERT INTO book VALUES(DEFAULT, "독해하이라이트 리딩북", "해법", "박정우", "21000", NULL, 1);
 SELECT book_name, b.price AS book_price FROM book b, course c WHERE b.cno=c.cno; 
@@ -145,4 +137,16 @@ CREATE TABLE user(
 	 birth DATE DEFAULT CURRENT_DATE,
     pt INT DEFAULT 0,
     visited INT DEFAULT 0
+);
+
+-- 수강 - 수강코드, 강의코드, 학생아이디, 수강총시간, 수강완료여부
+CREATE TABLE enroll (
+	eno INT AUTO_INCREMENT PRIMARY KEY,
+	cno int NOT NULL,
+	id VARCHAR(20) NOT NULL,
+	total_time INT NOT NULL, -- 총 강의 시간 
+	curr_time INT NOT NULL, -- 수강한 시간
+	complete BOOLEAN NOT NULL DEFAULT 0,
+	book BOOLEAN NOT NULL DEFAULT 0, -- 교재 선택 여부
+	price INT NOT NULL -- 교재여부에 따른 총 수강 가격
 );

@@ -15,15 +15,42 @@
             <%--<a href="https://www.facebook.com/themefisher" target="_blank"><i class="icofont-facebook"></i></a>
             <a href="https://github.com/themefisher/" target="_blank"><i class="icofont-github"></i></a>
             <a href="#" target="_blank"><i class="icofont-linkedin"></i></a>--%>
-            <a href="#">
-              <i class="icofont-login has-text-white"> 로그인</i>
-            </a>
-            <a href="#">
-              <i class="icofont-user has-text-white"> 회원가입</i>
-            </a>
-            <a href="#">
-              <i class="icofont-google-map has-text-white"> 오시는길</i>
-            </a>
+            <c:if test="${empty sid }">
+              <a href="${path0 }/user/loginForm">
+                <i class="icofont-login has-text-white"> 로그인</i>
+              </a>
+              <a href="#">
+                <i class="icofont-user has-text-white"> 회원가입</i>
+              </a>
+              <a href="#">
+                <i class="icofont-google-map has-text-white"> 오시는길</i>
+              </a>
+            </c:if>
+              <c:if test="${!empty sid && sid ne 'admin'}">
+                <a href="#">
+                  <i class="icofont-login has-text-white"> 로그아웃</i>
+                </a>
+                <a href="#">
+                  <i class="icofont-user has-text-white"> 마이페이지</i>
+                </a>
+                <a href="#">
+                  <i class="icofont-google-map has-text-white"> 오시는길</i>
+                </a>
+                <a href="${path0 }/admin/list">
+                  <i class="icofont-google-map has-text-white"> 관리자 페이지</i>
+                </a>
+              </c:if>
+              <c:if test="${sid eq 'admin' }">
+                <a href="${path0 }/user/logout">
+                  <i class="icofont-login has-text-white"> 로그아웃</i>
+                </a>
+                <a href="#">
+                  <i class="icofont-user has-text-white"> 마이페이지</i>
+                </a>
+                <a href="${path0 }/admin/list">
+                  <i class="icofont-google-map has-text-white"> 관리자 페이지</i>
+                </a>
+              </c:if>
             <%--<a href="donation.html" class="top-btn">Donate Now</a>--%>
           </div>
         </div>
