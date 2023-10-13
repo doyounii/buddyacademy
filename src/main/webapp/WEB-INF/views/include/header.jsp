@@ -19,7 +19,7 @@
               <a href="${path0 }/user/loginForm">
                 <i class="icofont-login has-text-white"> 로그인</i>
               </a>
-              <a href="#">
+              <a href="${path0 }/useragree">
                 <i class="icofont-user has-text-white"> 회원가입</i>
               </a>
               <a href="#">
@@ -27,7 +27,7 @@
               </a>
             </c:if>
               <c:if test="${!empty sid && sid ne 'admin'}">
-                <a href="#">
+                <a href="${path0 }/user/logout">
                   <i class="icofont-login has-text-white"> 로그아웃</i>
                 </a>
                 <a href="#">

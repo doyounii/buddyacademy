@@ -36,7 +36,7 @@ public class CourseController {
     }
 
     @RequestMapping(value = "signIn", method = RequestMethod.GET)
-    public String signInCourse(@RequestParam int cno,@RequestParam String price, Model model ) throws Exception {
+    public String signInCourse(@RequestParam int cno,@RequestParam int price, Model model ) throws Exception {
         Course course = courseService.getCourse(cno);
         Book book = courseService.getBook(cno);
         model.addAttribute("course", course);

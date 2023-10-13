@@ -229,7 +229,7 @@
                     </div>
                     <hr>
 
-                    <div class="content article-body" style="min-height: 400px">
+                    <div class="content article-body" style="min-height: 220px">
                         <p style="padding: 20px 100px; min-height: 100px; font-size: 18px;">
                             결제 항목
                             <br>
@@ -245,25 +245,6 @@
                 <!-- <span class="box has-text-white has-text-weight-semibold has-text-centered is-size-5" style="color: black;">
                     과정정보
                 </span> -->
-                <div class="box view_info has-text-white has-text-weight-semibold has-text-centered is-size-5">
-                    <span class="course" style="color: black;">과정정보</span>
-                    <dl>
-                        <dt>강사명</dt>
-                        <dd>${course.teacher_name }</dd>
-                    </dl>
-                    <dl>
-                        <dt>개강일</dt>
-                        <dd>${course.start_date }</dd>
-                    </dl>
-                    <dl>
-                        <dt>종강일</dt>
-                        <dd>${course.end_date }</dd>
-                    </dl>
-                    <dl>
-                        <dt>신청인원/총 인원</dt>
-                        <dd>${course.curr_num }/${course.total_num }</dd>
-                    </dl>
-                </div>
                 <ul class="menu-list">
                     <li>
                         <!-- 수강료 안내 -->
@@ -271,7 +252,8 @@
                             <div class="price_scroll mCustomScrollbar _mCS_1 mCS_no_scrollbar">
                                 <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
                                     <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
-                                        <hp class="price_h4">결제상세</hp>
+                                        <p class="price_h4">결제상세</p>
+                                        <span class="pointColor price" id="price"><strong id="course_price" class="eng"></strong></span>
                                     </div>
                                     <!--<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
                                         <div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 0px; top: 0px;">

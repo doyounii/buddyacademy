@@ -6,13 +6,15 @@
 <%@ page import="java.util.*, java.lang.*" %>
 <%@ page import="java.text.*, java.net.InetAddress" %>
 <c:set var="path1" value="${pageContext.request.contextPath }" />
+<c:set var="total_price" value="${course.price + book.price }"/>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>${course.course_name }</title>
     <!-- 헤드 부분 인클루드 -->
     <jsp:include page="../include/head.jsp"></jsp:include>
@@ -200,10 +202,26 @@
             white-space: nowrap;
             font-size: 16px;
         }
+        .menu-list .applyBtn input {
+            clear: both;
+            width: 115px;
+            height: 47px;
+            line-height: 32px;
+            border-radius: 55px;
+            vertical-align: middle;
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+            letter-spacing: -0.5pt;
+            font-weight: bold;
+            background-color: #fff;
+            color: #008CD6;
+            white-space: nowrap;
+            font-size: 16px;
+        }
         .applyBtn a.cart {
             margin-right: 4px;
         }
-        .applyBtn a.apply {
+        .applyBtn #apply {
             margin-right: 4px;
             background-color: #008CD6;
             color: #fff;
@@ -271,7 +289,7 @@
                         <div class="price_scroll mCustomScrollbar _mCS_1 mCS_no_scrollbar">
                             <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
                                 <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
-                                    <hp class="price_h4">수강료</hp>
+                                    <p class="price_h4">수강료</p>
                                     <span class="pointColor price" id="price"><strong id="course_price" class="eng">${course.price}원</strong></span>
                                 </div>
                             <!--<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
@@ -293,7 +311,7 @@
                                 <b id="sum_price">${course.price }원</b>
                             </p>
                             <p style="display: flex">
-                                <input type="checkbox" id="book_price" name="book_price" checked>
+                                <input type="checkbox" id="book_price" name="book_price" checked >
                                 <label for="book_price"><i> 교재금액</i></label>
                                 <b id="delivery_price">${book.price }원</b>
                             </p>
@@ -301,14 +319,13 @@
                                 <i>할인금액</i>
                                 <b id="discount_price" class="red">0원</b>
                             </p>-->
-                            <fmt:formatNumber value="${(book.price +course.price )}" type="number" var="total_price" />
                             <h4><i>총 결제금액</i><span class="pointColor price"><strong id="total_price" class="eng">${total_price }원</strong></span></h4>
                         </div>
                         <!-- 신청 버튼 -->
-                            <div class="applyBtn">
-                                <a href="#" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>장바구니</a>
-                                <a href="${path1 }/course/signIn?price=${total_price }&cno=${course.cno }" id="apply" class="apply bgColor"><i class="fa-solid fa-pencil"></i>수강신청</a>
-                            </div>
+                        <div class="applyBtn">
+                            <a href="#" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>장바구니</a>
+                            <a href="${path1 }/course/signIn?price=${total_price }&cno=${course.cno }" id="apply" class="apply bgColor"><i class="fa-solid fa-pencil"></i>수강신청</a>
+                        </div>
                     </li>
 
                 </ul>
@@ -324,11 +341,24 @@
         $("#book_price").change(function(){
             if($("#book_price").is(":checked")){
                 $('#total_price').text((${course.price }+${book.price })+'원');
-            }else{
+            } else {
                 $('#total_price').text(${course.price }+'원');
             }
         });
     });
+
+    /*$(document).ready(function(){
+            var price=$("#total_price").val();
+            let fn3 = () =>  $.ajax({
+                type:"get",                     // type:"get" => @RequestParam 으로 받는 경우
+                url:"${path1}/course/signIn?price="+price+"&cno=${course.cno }", // url:"./insertForm?num="+$("#num").val()+"&title="+$("#title").val();
+                success: function(t){ console.log("성공", t); },
+                //success: function(t){ var t1 = JSON.parse(t); },
+                error:function(err){ console.log("실패", err); }
+            });
+            $("#apply").on("click", function() { fn3() });
+    });
+*/
     $(document).ready(function(){
         $("#apply").click(function(){
             if(${course.curr_num == course.total_num }){

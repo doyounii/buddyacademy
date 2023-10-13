@@ -92,7 +92,7 @@ DROP TABLE course;
 
 INSERT INTO course VALUES(DEFAULT, "독해하이라이트", 120000, "2023-10-20", "2023-12-31", 100, DEFAULT, "park", "d");
 
--- 교재 - 교재코드, 교재명, 교재목차, 출판사, 출판일, 저자, 가격, 기타메모
+-- 교재 - 교재코드, 교재명, 교재목차, 출판사, 출판일, 저자, 가격, 기타메모, 
 CREATE TABLE book (
 	bno INT AUTO_INCREMENT PRIMARY KEY, 
 	book_name VARCHAR(100) NOT NULL,
@@ -126,7 +126,6 @@ SELECT b.bno, b.book_name, b.price AS book_price
 -- <p class="바탕글"><span style="font-size: 14px">&nbsp; #독해하이라이트 본교재</span></p>
 -- <p class="바탕글"><span style="font-size: 14px">&nbsp; #독해하이라이트 리딩북</span></p>
 -- <p class="바탕글"><span style="font-size: 14px">&nbsp; &nbsp; (카르페디엠3,4 과정에서도 사용되는 교재입니다)</span></p>
-
 
 CREATE TABLE user(
     id VARCHAR(20) PRIMARY KEY, pw VARCHAR(350) NOT NULL,
