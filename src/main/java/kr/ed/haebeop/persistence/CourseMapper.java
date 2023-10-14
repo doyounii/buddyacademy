@@ -1,7 +1,7 @@
 package kr.ed.haebeop.persistence;
 
-import kr.ed.haebeop.domain.Book;
 import kr.ed.haebeop.domain.Course;
+import kr.ed.haebeop.domain.Enroll;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -10,5 +10,6 @@ import java.util.List;
 public interface CourseMapper {
     public List<Course> getCourseList();
     public Course getCourse(int num);
-    public Book getBook(int cno);
+    public void insertEnroll(Enroll enroll);
+    public void updateStudentNum(int cno);
 }

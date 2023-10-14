@@ -21,7 +21,7 @@
     <script>
         $(document).ready(function(){
             $("#btn1").click(function(){
-                var test = { "num":$("#num").val(), "title":$("#title").val() };
+                var test = { "title":$("#title").val() };
                 $.ajax({
                     type:"post",                     // type:"get" => @RequestParam 으로 받는 경우
                     url:"${path1}/test/testInsert", // url:"./insertForm?num="+$("#num").val()+"&title="+$("#title").val();

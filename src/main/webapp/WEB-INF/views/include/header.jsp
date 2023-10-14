@@ -19,7 +19,7 @@
               <a href="${path0 }/user/loginForm">
                 <i class="icofont-login has-text-white"> 로그인</i>
               </a>
-              <a href="${path0 }/useragree">
+              <a href="${path0 }/user/agree">
                 <i class="icofont-user has-text-white"> 회원가입</i>
               </a>
               <a href="#">

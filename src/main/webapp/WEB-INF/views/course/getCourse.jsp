@@ -6,7 +6,7 @@
 <%@ page import="java.util.*, java.lang.*" %>
 <%@ page import="java.text.*, java.net.InetAddress" %>
 <c:set var="path1" value="${pageContext.request.contextPath }" />
-<c:set var="total_price" value="${course.price + book.price }"/>
+<c:set var="total_price" value="${course.price + course.book_price }"/>
 
 <!DOCTYPE html>
 <html>
@@ -43,7 +43,7 @@
             padding-top: 3px;
         }
         aside.menu {
-            width: 82%;
+            width: 100%;
         }
         .card {
             border-radius: 20px;
@@ -94,6 +94,7 @@
         .menu .menu-list {
             position: fixed;
             padding: 30px;
+            width: 28%;
         }
         .conwrap .box {
             margin-bottom: 50px;
@@ -135,7 +136,9 @@
             margin: 0 30px 30px 30px;
         }
         .total p {
-            display: block;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
             text-align: left;
             padding: 0;
             border: 0;
@@ -145,7 +148,7 @@
         .total i {
             display: inline-block;
             font-size: 1rem;
-            width: 115px;
+            width: 87px;
             font-style: normal;
             line-height: 1;
             letter-spacing: -0.5pt;
@@ -155,7 +158,7 @@
         .total p b {
             display: inline-block;
             margin: 0;
-            width: calc(100% - 115px);
+            width: calc(100% - 40px);
             text-align: right;
             line-height: 1;
             vertical-align: top;
@@ -166,6 +169,9 @@
             padding: 15px 0 0;
             margin: 15px 0 0;
             border-top: 1px solid #ddd;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
         .total h4 .pointColor .price {
             display: inline-block;
@@ -313,13 +319,13 @@
                             <p style="display: flex">
                                 <input type="checkbox" id="book_price" name="book_price" checked >
                                 <label for="book_price"><i> 교재금액</i></label>
-                                <b id="delivery_price">${book.price }원</b>
+                                <b id="delivery_price">${course.book_price }원</b>
                             </p>
                             <!--<p>
                                 <i>할인금액</i>
                                 <b id="discount_price" class="red">0원</b>
                             </p>-->
-                            <h4><i>총 결제금액</i><span class="pointColor price"><strong id="total_price" class="eng">${total_price }원</strong></span></h4>
+                            <h4><i style="margin-top: 8px;">총 결제금액</i><span class="pointColor price"><strong id="total_price" class="eng">${total_price }원</strong></span></h4>
                         </div>
                         <!-- 신청 버튼 -->
                         <div class="applyBtn">
@@ -335,7 +341,7 @@
 </div>
 <script>
     $(window).scroll(function(){
-        $(".menu-list").css("margin-top",Math.max(-150,0-$(this).scrollTop()));
+        $(".menu-list").css("margin-top",Math.max(-250,0-$(this).scrollTop()));
     });
     $(document).ready(function(){
         $("#book_price").change(function(){

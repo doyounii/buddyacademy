@@ -1,15 +1,12 @@
 package kr.ed.haebeop.controller;
 
-import kr.ed.haebeop.domain.Book;
 import kr.ed.haebeop.domain.Course;
+import kr.ed.haebeop.domain.Enroll;
 import kr.ed.haebeop.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,19 +26,23 @@ public class CourseController {
     @RequestMapping(value = "getCourse", method = RequestMethod.GET)
     public String getCourse(@RequestParam int cno, Model model ) throws Exception {
         Course course = courseService.getCourse(cno);
-        Book book = courseService.getBook(cno);
         model.addAttribute("course", course);
-        model.addAttribute("book", book);
         return "/course/getCourse";
     }
 
     @RequestMapping(value = "signIn", method = RequestMethod.GET)
     public String signInCourse(@RequestParam int cno,@RequestParam int price, Model model ) throws Exception {
         Course course = courseService.getCourse(cno);
-        Book book = courseService.getBook(cno);
         model.addAttribute("course", course);
-        model.addAttribute("book", book);
         model.addAttribute("price", price);
         return "/course/signInCourse";
     }
+
+    @RequestMapping(value="signIn", method = RequestMethod.POST)
+    public String insertEnrollPro(Enroll enroll, String sid, Model model) throws Exception {
+        courseService.insertEnroll(enroll);
+        courseService.updateStudentNum(enroll.getCno());
+        return "redirect:/";
+    }
+
 }

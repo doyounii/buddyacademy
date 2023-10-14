@@ -41,7 +41,7 @@
             padding-top: 3px;
         }
         aside.menu {
-            width: 82%;
+            width: 100%;
         }
         .card {
             border-radius: 20px;
@@ -88,9 +88,6 @@
             color: black;
             text-align: left;
             padding-left: 21px;
-        }
-        .menu .menu-list {
-            padding: 30px;
         }
         .conwrap .box {
             margin-bottom: 50px;
@@ -240,7 +237,7 @@
             </div>
 
         </div>
-        <div class="column is-4">
+        <div class="column is-4" style="padding-top:0px;">
             <aside class="menu">
                 <!-- <span class="box has-text-white has-text-weight-semibold has-text-centered is-size-5" style="color: black;">
                     과정정보
@@ -288,15 +285,21 @@
                                 <i>할인금액</i>
                                 <b id="discount_price" class="red">0원</b>
                             </p>-->
-                            <h4><i>총 결제금액</i><span class="pointColor price"><strong id="total_price" class="eng">${price }원</strong></span></h4>
+                            <h4><i style="margin-top: 8px; margin-right: 16px;">총 결제금액</i><span class="pointColor price"><strong id="total_price" class="eng">${price }원</strong></span></h4>
                         </div>
                         <!-- 신청 버튼-->
+                        <form action="${path1 }/course/signIn" method="post">
                         <div class="applyBtn">
                             <a href="${path1 }/course/getCourse?cno=${course.cno }" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>취소</a>
-                            <a href="${path1 }/course/signIn?price=${total_price }&cno=${course.cno }" class="apply bgColor"><i class="fa-solid fa-pencil"></i>결제하기</a>
+                            <button id="apply" class="apply bgColor"><i class="fa-solid fa-pencil"></i>결제하기</button>
                         </div>
+                        <!-- hidden으로 form 넘기기 -->
+                            <input type="hidden" id="enroll_price" name="enroll_price" value="${price }">
+                            <input type="hidden" id="cno" name="cno" value="${course.cno }">
+                            <input type="hidden" id="id" name="id" value="${sid }">
+                            <input type="hidden" id="book_name" name="book_name" value="${course.book_name }">
+                        </form>
                     </li>
-
                 </ul>
             </aside>
         </div>

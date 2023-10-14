@@ -1,7 +1,7 @@
 package kr.ed.haebeop.service;
 
-import kr.ed.haebeop.domain.Book;
 import kr.ed.haebeop.domain.Course;
+import kr.ed.haebeop.domain.Enroll;
 import kr.ed.haebeop.persistence.CourseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,12 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public Book getBook(int cno) {
-        return courseMapper.getBook(cno);
+    public void insertEnroll(Enroll enroll) {
+        courseMapper.insertEnroll(enroll);
+    }
+
+    @Override
+    public void updateStudentNum(int cno) {
+        courseMapper.updateStudentNum(cno);
     }
 }

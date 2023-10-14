@@ -17,5 +17,8 @@ public class Course {
     private int curr_num;
     private String teacher_name;
     private String content;
-    private int bno;
+    private String book_name;
+    private int book_price;
+    private String imgsrc1;
+    private String imgsrc2;
 }
