@@ -42,19 +42,6 @@ CREATE TABLE notice (
 	visited INT DEFAULT 0;
 );
 
---자료실 - 순번,제목,내용,자료파일1,자료파일2,자료파일3,작성일,작성자,읽은횟수
-CREATE TABLE fileboard (
-	fno INT AUTO_INCREMENT PRIMARY KEY,
-	title VARCHAR(100) NOT NULL,
-	content VARCHAR(1000) NOT NULL,
-	f1 VARCHAR(300) NOT NULL,
-	f2 VARCHAR(300),
-	f3 VARCHAR(300),
-	regdate DATETIME DEFAULT CURRENT_TIME,
-	id VARCHAR(20) NOT NULL, 
-	visited INT DEFAULT 0
-);
-
 -- 과목 - 과목코드, 과목명, 과목단가
 CREATE TABLE SUBJECT (
 	sno INT AUTO_INCREMENT PRIMARY KEY,
@@ -181,3 +168,44 @@ update course set curr_num =curr_num+1 where cno=1;
 SELECT * from enroll WHERE id = "park" and cno=1;
 
 INSERT INTO enroll VALUES(DEFAULT, 1, "park", DEFAULT, DEFAULT, 141000, "리딩북");
+
+CREATE TABLE fileinfo(NO INT AUTO_INCREMENT PRIMARY KEY,  -- 번호
+articleno varchar(45) DEFAULT NULL,	-- 글번호
+saveFolder varchar(45) DEFAULT NULL,	-- 저장 디렉토리
+originFile varchar(45) DEFAULT NULL,	-- 
+saveFile varchar(45) DEFAULT NULL
+);
+
+
+CREATE TABLE fileobj (
+	no int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	postno INT NOT NULL,
+	savefolder VARCHAR(400),
+	originfile VARCHAR(400),
+	savefile VARCHAR(800),
+	filesize LONG,
+	uploaddate VARCHAR(100)
+);
+
+CREATE TABLE fileboard (
+	postno int NOT NULL AUTO_INCREMENT PRIMARY KEY,	-- 글 번호
+	title VARCHAR(100) not null,   -- 글제목
+	content VARCHAR(1500) not null,    -- 글내용
+	regdate DATETIME DEFAULT CURRENT_TIMESTAMP(),   -- 작성일
+	visited INT DEFAULT 0   -- 조회수
+);
+
+
+
+--자료실 - 순번,제목,내용,자료파일1,자료파일2,자료파일3,작성일,작성자,읽은횟수
+CREATE TABLE fileboard22 (
+	fno INT AUTO_INCREMENT PRIMARY KEY,
+	title VARCHAR(100) NOT NULL,
+	content VARCHAR(1000) NOT NULL,
+	f1 VARCHAR(300) NOT NULL,
+	f2 VARCHAR(300),
+	f3 VARCHAR(300),
+	regdate DATETIME DEFAULT CURRENT_TIME,
+	id VARCHAR(20) NOT NULL, 
+	visited INT DEFAULT 0
+);
