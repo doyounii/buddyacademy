@@ -330,7 +330,7 @@
                         <!-- 신청 버튼 -->
                         <div class="applyBtn">
                             <a href="#" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>장바구니</a>
-                            <a href="${path1 }/course/signIn?price=${total_price }&cno=${course.cno }" id="apply" class="apply bgColor"><i class="fa-solid fa-pencil"></i>수강신청</a>
+                            <a id="apply" class="apply bgColor"><i class="fa-solid fa-pencil"></i>수강신청</a>
                         </div>
                     </li>
 
@@ -346,7 +346,7 @@
     $(document).ready(function(){
         $("#book_price").change(function(){
             if($("#book_price").is(":checked")){
-                $('#total_price').text((${course.price }+${book.price })+'원');
+                $('#total_price').text((${course.price }+${course.book_price })+'원');
             } else {
                 $('#total_price').text(${course.price }+'원');
             }
@@ -367,9 +367,15 @@
 */
     $(document).ready(function(){
         $("#apply").click(function(){
-            if(${course.curr_num == course.total_num }){
+            // 회원만 수강 신청 가능
+            if(${sid eq null }){
+                alert("수강신청은 로그인 후 가능합니다.");
+                window.location.href = '${path1}/user/loginForm';
+            } else if (${sid ne null && course.curr_num == course.total_num }){
                 alert("모집이 마감된 강의입니다.");
-                $(location).attr('href', '${path1 }/course/list');
+                window.location.href = '${path1}/course/list';
+            } else {
+                window.location.href = '${path1}/course/signIn?price=${total_price}&cno=${course.cno}';
             }
         });
     });

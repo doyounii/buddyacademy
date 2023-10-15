@@ -30,7 +30,7 @@
                 <a href="${path0 }/user/logout">
                   <i class="icofont-login has-text-white"> 로그아웃</i>
                 </a>
-                <a href="#">
+                <a href="${path0 }/user/mypageCourse">
                   <i class="icofont-user has-text-white"> 마이페이지</i>
                 </a>
                 <a href="#">
@@ -44,7 +44,7 @@
                 <a href="${path0 }/user/logout">
                   <i class="icofont-login has-text-white"> 로그아웃</i>
                 </a>
-                <a href="#">
+                <a href="${path0 }/user/mypageCourse">
                   <i class="icofont-user has-text-white"> 마이페이지</i>
                 </a>
                 <a href="${path0 }/admin/list">

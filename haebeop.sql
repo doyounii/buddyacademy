@@ -28,6 +28,8 @@ CREATE TABLE USER (
 	visited INT DEFAULT 0
 );
 
+INSERT INTO user( id, pw, NAME ) VALUES('park', '$2a$10$mgYidy4Nlg8biY8b7jRnEex3UvogWP2Q28OtqI/f3V.g1OCaj74EW','관리자');
+
 INSERT INTO user( id, pw, NAME ) VALUES('admin', '$2a$10$mgYidy4Nlg8biY8b7jRnEex3UvogWP2Q28OtqI/f3V.g1OCaj74EW','관리자');
 DROP TABLE user;
 
@@ -173,5 +175,9 @@ CREATE TABLE enroll (
 select * from course where cno = 1
 
 SELECT b.bno, c.book_name, b.price FROM book b, course c WHERE b.cno=1;
+
+update course set curr_num =curr_num+1 where cno=1;
+
+SELECT * from enroll WHERE id = "park" and cno=1;
 
 INSERT INTO enroll VALUES(DEFAULT, 1, "park", DEFAULT, DEFAULT, 141000, "리딩북");
