@@ -32,4 +32,14 @@ public class CourseServiceImpl implements CourseService{
     public void updateStudentNum(int cno) {
         courseMapper.updateStudentNum(cno);
     }
+
+    @Override
+    public List<Enroll> getEnrollList(String id) {
+        return courseMapper.getEnrollList(id);
+    }
+
+    @Override
+    public void complete(int eno) {
+        courseMapper.complete(eno);
+    }
 }

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.util.*, java.lang.*" %>
 <%@ page import="java.text.*, java.net.InetAddress" %>
-<c:set var="path1" value="/pro3_war" />
+<c:set var="path1" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,21 +19,7 @@
 <body>
 <div class="container is-fullhd">
 	<!-- 헤더 부분 인클루드 -->
-	<jsp:include page="../include/hd.jsp"></jsp:include>
-	<figure class="visual" id="vs1">
-		<ul class="imgbox">
-			<li class="hero is-medium is-link">
-				<div class="hero-body">
-					<p class="title">
-						Medium hero
-					</p>
-					<p class="subtitle">
-						Medium subtitle
-					</p>
-				</div>
-			</li>
-		</ul>
-	</figure>
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	<div class="content" id="contents">
 	    <div class="row column text-center">
 	      <h2 class="h1">자료실 목록</h2>
@@ -77,7 +63,7 @@
 	    </div>
 	</div>
 	<!-- 푸터 부분 인클루드 -->
-	<jsp:include page="../include/ft.jsp"></jsp:include>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 </div>
 </body>
 </html>

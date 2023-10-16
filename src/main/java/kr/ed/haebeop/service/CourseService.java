@@ -10,5 +10,6 @@ public interface CourseService {
     public Course getCourse(int num);
     public void insertEnroll (Enroll enroll);
     public void updateStudentNum(int cno);
-
+    public List<Enroll> getEnrollList(String id);
+    public void complete(int eno);
 }

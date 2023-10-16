@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -46,8 +47,15 @@ public class CourseController {
     public String insertEnrollPro(Enroll enroll, String sid, Model model) throws Exception {
         courseService.insertEnroll(enroll);
         courseService.updateStudentNum(enroll.getCno());
-        model.addAttribute("price", enroll.getCno());
         return "redirect:/";
     }
 
+    //회원의 수강 신청 정보 보기
+    @RequestMapping(value="mypageCourse", method = RequestMethod.GET)
+    public String userPageCourse(Model model, HttpServletRequest request) throws Exception {
+        String id = (String) session.getAttribute("sid");
+        List<Enroll> getEnrollList = courseService.getEnrollList(id);
+        model.addAttribute("getEnrollList", getEnrollList);
+        return "/course/mypageCourse";
+    }
 }

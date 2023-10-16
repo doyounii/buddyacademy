@@ -1,5 +1,6 @@
 package kr.ed.haebeop.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -35,6 +36,7 @@ public class ServletContext implements WebMvcConfigurer {
         registry.addResourceHandler("/test/**").addResourceLocations("/WEB-INF/views/test");
         registry.addResourceHandler("/course/**").addResourceLocations("/WEB-INF/views/course");
         registry.addResourceHandler("/user/**").addResourceLocations("/WEB-INF/views/user");
+        registry.addResourceHandler("/file/**").addResourceLocations("/WEB-INF/views/file");
     }
 
     @Override
@@ -44,5 +46,10 @@ public class ServletContext implements WebMvcConfigurer {
         bean.setPrefix("/WEB-INF/views/");
         bean.setSuffix(".jsp");
         registry.viewResolver(bean);
+    }
+
+    @Bean(name = "uploadPath")
+    public String uploadPath() {
+        return "D:\\kim\\spring1\\pro31\\src\\main\\webapp\\resources\\upload";
     }
 }

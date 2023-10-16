@@ -30,7 +30,7 @@
                 <a href="${path0 }/user/logout">
                   <i class="icofont-login has-text-white"> 로그아웃</i>
                 </a>
-                <a href="${path0 }/user/mypageCourse">
+                <a href="${path0 }/course/mypageCourse">
                   <i class="icofont-user has-text-white"> 마이페이지</i>
                 </a>
                 <a href="#">
@@ -44,7 +44,7 @@
                 <a href="${path0 }/user/logout">
                   <i class="icofont-login has-text-white"> 로그아웃</i>
                 </a>
-                <a href="${path0 }/user/mypageCourse">
+                <a href="${path0 }/course/mypageCourse">
                   <i class="icofont-user has-text-white"> 마이페이지</i>
                 </a>
                 <a href="${path0 }/admin/list">
@@ -99,14 +99,14 @@
             <li class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">커뮤니티</a>
               <div class="navbar-dropdown">
-                <a class="navbar-item" href="#">공지사항</a>
+                <a class="navbar-item" href="${path0 }/notice/list.do">공지사항</a>
                 <a class="navbar-item" href="#">자주 묻는 질문</a>
                 <a class="navbar-item" href="#">후기</a>
               </div>
             </li>
 
             <li class="navbar-item">
-              <a class="navbar-link" href="#">자료실</a>
+              <a class="navbar-link" href="${path0 }/file/filelist1.do">자료실</a>
             </li>
             <%--<li class="navbar-item">
                 <a class="navbar-link" href="contact.html">Contact</a>

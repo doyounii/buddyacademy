@@ -96,7 +96,7 @@ SELECT * FROM
 DROP TABLE course;
 
 INSERT INTO course VALUES(DEFAULT, "독해하이라이트", 120000, "2023-10-20", "2023-12-31", 100, DEFAULT, "park", "d", "독해하이라이트 리딩북", 21000, DEFAULT, DEFAULT);
-INSERT INTO course VALUES(DEFAULT, "독해하이라이트2", 120000, "2023-10-20", "2023-12-31", 1, DEFAULT, "park", "d", "독해하이라이트 리딩북", 21000, DEFAULT, DEFAULT);
+INSERT INTO course VALUES(DEFAULT, "독해하이라이트2", 320000, "2023-10-20", "2023-12-31", 1, DEFAULT, "park", "d", "독해하이라이트 리딩북2", 21000, DEFAULT, DEFAULT);
 
 -- 교재 - 교재코드, 교재명, 교재목차, 출판사, 출판일, 저자, 가격, 기타메모, 
 CREATE TABLE book (
@@ -209,3 +209,73 @@ CREATE TABLE fileboard22 (
 	id VARCHAR(20) NOT NULL, 
 	visited INT DEFAULT 0
 );
+
+CREATE table notice(
+no INT AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(200) NOT NULL,
+content VARCHAR(2000) NOT NULL,
+resdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+visit int DEFAULT 0
+);
+
+INSERT INTO notice VALUES(
+DEFAULT,
+'[애니키즈] 다시보기 서비스 중지 프로그램 안내',
+'"애니키즈" VOD 다시보기 프로그램 중 서비스 계약 만료에 따라<br>
+10월 17일(화)부터 서비스 이용이 불가능한 프로그램을 알려드립니다.<br>
+<br>
+* 서비스 중단일 : 10월17일(화)<br>
+<br>
+① 모험왕 블링키<br>
+② 안녕 자두야 1<br>
+③ 극장판 안녕 자두야<br>
+④ 콩순이 쑥쑥 인기동요(한/영)<br>
+⑤ 콩순이 쑥쑥 베스트송(한/영)<br>
+⑥ 콩순이 쑥쑥 여행동요(한/영)<br>
+⑦ 콩순이 쑥쑥 창의력동요(한/영)<br>
+⑧ 콩순이 쑥쑥 놀이동요(한/영)<br>
+⑨ 콩순이 쑥쑥 요리동요(한/영)<br>
+⑩ 콩순이 쑥쑥 자존감동요(한/영)<br>
+⑪ 콩순이 쑥쑥 교통수단동요(한/영)<br>
+⑫ 콩순이 쑥쑥 상상력동요(한/영)<br>
+⑬ 콩순이 쑥쑥 탐험동요(한/영)<br>
+<br>
+애니키즈 프로그램에 많은 관심 부탁드리며<br>
+앞으로 더 좋은 서비스로 보답하겠습니다.<br>
+<br>
+감사합니다.',
+DEFAULT,
+DEFAULT
+);
+
+INSERT INTO notice VALUES(
+DEFAULT,
+'macOS 14.0 업데이트에 따른 학습용 플레이어 서비스 이용제한 안내',
+'macOS 14.0 업데이트 버전이 2023년 9월 27일 신규 패치됨에 따라,<br>
+ 안정적인 강좌 스트리밍 서비스를 위해 자동/수동 업데이트를 추석 연휴 이후 진행을 부탁드립니다.<br>
+<br>
+macOS 14.0 이하 기존 사용자는 현재 서비스 그대로 학습용 플레이어를 통해 강좌 학습을 이용하시면 되며,<br>
+OS 업데이트 하신 분들은 강좌 학습 이용에 제한이 있을 수 있습니다.<br>
+<br>
+OS버전 업데이트를 하신 사용자분은 불편하시겠지만<br>
+ 플레이어 업데이트(2023.10.05. 예정) 전까지는 모바일에서 이용을 부탁드립니다. ',
+DEFAULT,
+DEFAULT
+);
+
+SELECT * FROM enroll WHERE id = "admin";
+SELECT c.cno, c.course_name, c.start_date, c.end_date, c.imgsrc1, e.eno, e.id, e.complete FROM course c INNER JOIN enroll e ON c.cno = e.cno WHERE id="admin";
+
+SELECT c.cno, c.course_name, c.start_date, c.end_date, c.imgsrc1, e.eno, e.id, e.complete, u.name
+FROM course c
+INNER JOIN enroll e ON c.cno = e.cno 
+INNER JOIN user u ON e.id = u.id
+WHERE u.id = 'admin' AND e.complete = 0;
+
+SELECT b.bno, b.book_name, b.price AS book_price
+    FROM book b
+    INNER JOIN course c ON b.cno = c.cno
+    WHERE c.cno = 1;
+    
+
+update enroll set complete =1 where eno=1 ;

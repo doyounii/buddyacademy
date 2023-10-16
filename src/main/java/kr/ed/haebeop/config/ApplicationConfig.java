@@ -1,13 +1,12 @@
 package kr.ed.haebeop.config;
 
+import kr.ed.haebeop.persistence.FilePerisistence;
+import kr.ed.haebeop.persistence.FilePersistenceImpl;
 import kr.ed.haebeop.persistence.UserPersistence;
 import kr.ed.haebeop.persistence.UserPersistenceImpl;
 import kr.ed.haebeop.repository.TestRepository;
 import kr.ed.haebeop.repository.TestRepositorympl;
-import kr.ed.haebeop.service.TestService;
-import kr.ed.haebeop.service.TestServiceImpl;
-import kr.ed.haebeop.service.UserService;
-import kr.ed.haebeop.service.UserServiceImpl;
+import kr.ed.haebeop.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -31,4 +30,14 @@ public class ApplicationConfig {
 
     @Bean
     public UserService userService() {return new UserServiceImpl();}
+
+    @Bean
+    public FilePerisistence filePerisistence() {return new FilePersistenceImpl();}
+
+    @Bean
+    public FileService fileService() {return  new FileServiceImpl();}
+    @Bean(name = "uploadPath")
+    public String uploadPath() {
+        return "D:\\doyouni\\buddybuddy\\src\\main\\webapp\\resources\\upload";
+    }
 }

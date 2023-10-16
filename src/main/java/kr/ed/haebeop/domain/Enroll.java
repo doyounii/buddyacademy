@@ -15,4 +15,9 @@ public class Enroll {
     private boolean book;
     private int enroll_price;
     private String book_name;
+    private String course_name;
+    private String start_date;
+    private String end_date;
+    private String imgsrc1;
+    private String name;
 }

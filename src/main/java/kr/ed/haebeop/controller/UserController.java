@@ -165,11 +165,4 @@ public class UserController {
         return "redirect:/";
     }
 
-    //회원의 수강 신청 정보 보기
-    @RequestMapping(value="mypageCourse", method = RequestMethod.GET)
-    public String userPageCourse(Model model, HttpServletRequest request) throws Exception {
-        String id = (String) session.getAttribute("sid");
-
-        return "/user/mypageCourse";
-    }
 }
