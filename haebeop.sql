@@ -98,6 +98,9 @@ DROP TABLE course;
 INSERT INTO course VALUES(DEFAULT, "독해하이라이트", 120000, "2023-10-20", "2023-12-31", 100, DEFAULT, "park", "d", "독해하이라이트 리딩북", 21000, DEFAULT, DEFAULT);
 INSERT INTO course VALUES(DEFAULT, "독해하이라이트2", 320000, "2023-10-20", "2023-12-31", 1, DEFAULT, "park", "d", "독해하이라이트 리딩북2", 21000, DEFAULT, DEFAULT);
 
+INSERT INTO course VALUES(DEFAULT, "독해하이라이트3", 120000, "2023-10-20", "2023-12-31", 100, DEFAULT, "park", "d", "독해하이라이트 리딩북3", 21000, DEFAULT, DEFAULT);
+INSERT INTO course VALUES(DEFAULT, "독해하이라이트4", 120000, "2023-10-20", "2023-12-31", 100, DEFAULT, "park", "d", "독해하이라이트 리딩북4", 21000, DEFAULT, DEFAULT);
+INSERT INTO course VALUES(DEFAULT, "독해하이라이트5", 120000, "2023-10-20", "2023-12-31", 100, DEFAULT, "park", "d", "독해하이라이트 리딩북5", 21000, DEFAULT, DEFAULT);
 -- 교재 - 교재코드, 교재명, 교재목차, 출판사, 출판일, 저자, 가격, 기타메모, 
 CREATE TABLE book (
 	bno INT AUTO_INCREMENT PRIMARY KEY,
