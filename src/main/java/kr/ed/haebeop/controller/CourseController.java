@@ -69,10 +69,10 @@ public class CourseController {
     }
 
     @RequestMapping(value = "signIn", method = RequestMethod.GET)
-    public String signInCourse(@RequestParam int cno,@RequestParam int price, Model model ) throws Exception {
+    public String signInCourse(@RequestParam int cno,@RequestParam int book, Model model ) throws Exception {
         Course course = courseService.getCourse(cno);
         model.addAttribute("course", course);
-        model.addAttribute("price", price);
+        model.addAttribute("book", book);
         return "/course/signInCourse";
     }
 
@@ -103,7 +103,7 @@ public class CourseController {
             size += courseService.getEnrollList(enroll).size();
 
             if (size != 0) {
-                int enrollNum = Math.round( 100 / size);
+                int enrollNum = (int) Math.ceil( 100.0 / (double) size);
                 model.addAttribute("enrollNum",enrollNum);
             }
             return "/course/mypageCourse";
@@ -121,7 +121,7 @@ public class CourseController {
             size += courseService.getEnrollList(enroll).size();
 
             if (size != 0) {
-                int enrollNum = Math.round( 100 / size);
+                int enrollNum = (int) Math.ceil( 100.0 / (double) size);
                 model.addAttribute("enrollNum",enrollNum);
             }
             return "/course/completedCourse";

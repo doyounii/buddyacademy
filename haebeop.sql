@@ -28,7 +28,6 @@ CREATE TABLE USER (
 	visited INT DEFAULT 0
 );
 
-INSERT INTO user( id, pw, NAME ) VALUES('park', '$2a$10$mgYidy4Nlg8biY8b7jRnEex3UvogWP2Q28OtqI/f3V.g1OCaj74EW','관리자');
 
 INSERT INTO user( id, pw, NAME ) VALUES('admin', '$2a$10$mgYidy4Nlg8biY8b7jRnEex3UvogWP2Q28OtqI/f3V.g1OCaj74EW','관리자');
 DROP TABLE user;

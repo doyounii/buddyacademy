@@ -232,12 +232,24 @@
             background-color: #008CD6;
             color: #fff;
         }
+        .breadcrumb a {
+            color: #464646;
+        }
     </style>
 </head>
 <body>
 <!-- 헤더 부분 인클루드 -->
 <jsp:include page="../include/header.jsp"></jsp:include>
-<div class="container is-fullhd" style="min-height: 1000px; padding-top: 100px;">
+<nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
+    <ul class="mr-5">
+        <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a href="${path1}/course/list.do">수강신청</a></li>
+        <li class="is-active"><a href="${path1 }/course/getCourse?cno=${course.cno }" aria-current="page">수강신청</a></li>
+    </ul>
+
+    <p class="title has-text-centered mt-1 mb-2">수강신청</p>
+</nav>
+<div class="container is-fullhd" style="min-height: 1000px;">
     <div class="columns">
         <div class="column is-8">
             <div class="conwrap">
@@ -329,8 +341,8 @@
                         </div>
                         <!-- 신청 버튼 -->
                         <div class="applyBtn">
-                            <a href="#" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>장바구니</a>
-                            <a id="apply" class="apply bgColor"><i class="fa-solid fa-pencil"></i>수강신청</a>
+                            <a href="#" class="cart pointColor pointBorder"><i class="icofont-cart"></i> 장바구니</a>
+                            <a id="apply" class="apply bgColor"><i class="icofont-pencil"></i> 수강신청</a>
                         </div>
                     </li>
 
@@ -364,21 +376,6 @@
             });
             $("#apply").on("click", function() { fn3() });
     });
-
-    $(document).ready(function(){
-        $("#apply").click(function(){
-            // 회원만 수강 신청 가능
-            if(${sid eq null }){
-                alert("수강신청은 로그인 후 가능합니다.");
-                window.location.href = '${path1}/user/loginForm';
-            } else if (${sid ne null && course.curr_num == course.total_num }){
-                alert("모집이 마감된 강의입니다.");
-                window.location.href = '${path1}/course/list';
-            } else {
-                window.location.href = '${path1}/course/signIn?price=${total_price}&cno=${course.cno}';
-            }
-        });
-    });
  */
 
     $(document).ready(function(){
@@ -392,7 +389,11 @@
                     alert("모집이 마감된 강의입니다.");
                     window.location.href = '${path1}/course/list.do';
                 } else {
-                    window.location.href = '${path1}/course/signIn?price=${total_price}&cno=${course.cno}';
+                    if($("#book_price").is(":checked")){
+                        window.location.href = '${path1}/course/signIn?cno=${course.cno}&book=1';
+                    } else {
+                        window.location.href = '${path1}/course/signIn?cno=${course.cno}&book=0';
+                    }
                 }
             } else {
                 //if (${sid ne null && isEnroll eq true })

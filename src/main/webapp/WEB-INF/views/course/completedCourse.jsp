@@ -28,7 +28,7 @@
             justify-content: flex-start;
             min-width: 100%;
         }
-        h4 {
+        p {
             font-size: 1.294rem;
             color: #222;
             font-weight: 500;
@@ -101,10 +101,10 @@
 <%--                    </div>--%>
 <%--                </div>--%>
             <c:if test="${enrollNum ne null}">
-                <h4>학습 현황 그래프</h4>
-                <progress class="progress  is-large is-success" value="${enrollNum*size }" max="100"></progress>
+                <p>학습 현황 그래프</p>
+                <progress class="progress is-large is-success" style="height:2rem;" value="${enrollNum*size }" max="100"></progress>
                 <c:if test="${enrollNum*size >= 100 }">
-                    <h4>❤️👍💖💫모든 강좌를 수강완료하였습니다!💝🎉🎊🎇</h4>
+                    <p>❤️👍💖💫모든 강좌를 수강완료하였습니다!💝🎉🎊🎇</p>
                 </c:if>
             </c:if>
             </section>
