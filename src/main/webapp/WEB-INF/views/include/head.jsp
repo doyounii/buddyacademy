@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css" />
-<link rel="stylesheet" href="${path0}/resources/css/styles.css" />
+<link rel="stylesheet" href="${path0}/resources/css/styles2.css" />
 <link rel="stylesheet" href="${path0}/resources/css/style_test.css" />
 <link rel="stylesheet" href="${path0}/resources/css/forum.css" />
 <link rel="stylesheet" href="${path0}/resources/css/blog.css" />
@@ -42,7 +42,7 @@
 <!-- Main Stylesheet -->
 <link rel="stylesheet" href="${path0}/resources/css/style.css">
 <link rel="stylesheet" href="${path0}/resources/css/ft.css" />
-<link rel="stylesheet" href="${path0}/resources/css/styles.css">
+<link rel="stylesheet" href="${path0}/resources/css/styles2.css">
 
 
 <!-- Essential Scripts =====================================-->

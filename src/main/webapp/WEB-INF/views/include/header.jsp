@@ -30,7 +30,7 @@
                 <a href="${path0 }/user/logout">
                   <i class="icofont-login has-text-white"> 로그아웃</i>
                 </a>
-                <a href="${path0 }/course/mypageCourse">
+                <a href="${path0 }/course/mypageCourse?complete=0">
                   <i class="icofont-user has-text-white"> 마이페이지</i>
                 </a>
                 <a href="#">
@@ -44,7 +44,7 @@
                 <a href="${path0 }/user/logout">
                   <i class="icofont-login has-text-white"> 로그아웃</i>
                 </a>
-                <a href="${path0 }/course/mypageCourse">
+                <a href="${path0 }/course/mypageCourse?complete=0">
                   <i class="icofont-user has-text-white"> 마이페이지</i>
                 </a>
                 <a href="${path0 }/admin/list">
@@ -87,7 +87,7 @@
             <li class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">수강신청</a>
               <div class="navbar-dropdown">
-                <a class="navbar-item" href="${path0 }/course/list">강의 게시판</a>
+                <a class="navbar-item" href="${path0 }/course/list.do">강의 게시판</a>
                 <a class="navbar-item" href="#">개강 일정</a>
               </div>
             </li>

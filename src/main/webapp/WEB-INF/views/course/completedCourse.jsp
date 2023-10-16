@@ -102,8 +102,8 @@
 <%--                </div>--%>
             <c:if test="${enrollNum ne null}">
                 <h4>학습 현황 그래프</h4>
-                <progress class="progress  is-large is-success" value="${100 - enrollNum*size }" max="100"></progress>
-                <c:if test="${100 - enrollNum*size >= 100 }">
+                <progress class="progress  is-large is-success" value="${enrollNum*size }" max="100"></progress>
+                <c:if test="${enrollNum*size >= 100 }">
                     <h4>❤️👍💖💫모든 강좌를 수강완료하였습니다!💝🎉🎊🎇</h4>
                 </c:if>
             </c:if>
@@ -116,28 +116,25 @@
                         <div class="card is-shady">
                             <div class="card-image">
                                 <figure class="image is-4by3">
-                                    <img src="${path1 }/resources/upload/${course.imgsrc1 }" alt="Placeholder image" class="modal-button" data-target="modal-image2">
+                                    <img src="${path1 }/resources/upload/${enroll.imgsrc1 }" alt="Placeholder image" class="modal-button" data-target="modal-image2">
                                 </figure>
                             </div>
                             <div class="card-content">
                                 <div class="content">
                                     <h4>${enroll.course_name }</h4>
                                     <h4>수강 종료일 | ${enroll.end_date }</h4>
-                                    <form action="${path1 }/course/complete" method="post">
-                                        <button class="button is-link modal-button" data-target="modal-image2">수강 완료</button>
-                                        <input type="hidden" id="eno" name="eno" value="${enroll.eno }" >
-                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                     </c:forEach>
-                        <c:if test="${empty getEnrollList and enrollNum eq null}">
+                        <c:if test="${empty getEnrollList }">
                             <tr>
-                                <td colspan="4">수강 중인 강좌가 없습니다.</td>
+                                <td colspan="4">수강 종료된 강좌가 없습니다.</td>
                             </tr>
                         </c:if>
                     </div>
+
                 </div>
             </div>
         </div>

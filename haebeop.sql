@@ -270,7 +270,7 @@ SELECT c.cno, c.course_name, c.start_date, c.end_date, c.imgsrc1, e.eno, e.id, e
 FROM course c
 INNER JOIN enroll e ON c.cno = e.cno 
 INNER JOIN user u ON e.id = u.id
-WHERE u.id = 'admin' AND e.complete = 0;
+WHERE u.id = 'admin' AND e.complete = 1;
 
 SELECT b.bno, b.book_name, b.price AS book_price
     FROM book b
@@ -279,3 +279,83 @@ SELECT b.bno, b.book_name, b.price AS book_price
     
 
 update enroll set complete =1 where eno=1 ;
+
+-- 자료실 자료 데이터 테이블 생성
+CREATE TABLE fileInfo(
+    no int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    articleno INT,
+    saveFolder VARCHAR(300) NOT NULL,
+    originFile VARCHAR(300) NOT NULL,
+    saveFile VARCHAR(300) NOT NULL);
+
+-- 자료실 테이블 생성
+CREATE TABLE fileboard (
+    articleno int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id varchar(16) NOT NULL,
+    title varchar(100) NOT NULL,
+    content varchar(2000) NOT NULL,
+    regdate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP);
+
+
+CREATE TABLE fileinfo(
+NO INT AUTO_INCREMENT PRIMARY KEY,  -- 번호
+articleno varchar(45) DEFAULT NULL,	-- 글번호
+saveFolder varchar(45) DEFAULT NULL,	-- 저장 디렉토리
+originFile varchar(45) DEFAULT NULL,	--
+saveFile varchar(45) DEFAULT NULL
+);
+CREATE TABLE fileobj (
+	no int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	postno INT NOT NULL,
+	savefolder VARCHAR(400),
+	originfile VARCHAR(400),
+	savefile VARCHAR(800),
+	filesize LONG,
+	uploaddate VARCHAR(100)
+);
+CREATE TABLE fileboard (
+	postno int NOT NULL AUTO_INCREMENT PRIMARY KEY,	-- 글 번호
+	title VARCHAR(100) not null,   -- 글제목
+	content VARCHAR(1500) not null,    -- 글내용
+	regdate DATETIME DEFAULT CURRENT_TIMESTAMP(),   -- 작성일
+	visited INT DEFAULT 0   -- 조회수
+);
+SELECT c.cno, c.course_name, c.start_date, c.end_date, c.imgsrc1, e.eno, e.id, e.complete, u.name
+        FROM course c
+                 INNER JOIN enroll e ON c.cno = e.cno
+                 INNER JOIN user u ON e.id = u.id
+        WHERE u.id = "admin"
+
+CREATE table review(
+no INT AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(200) NOT NULL,
+content VARCHAR(2000) NOT NULL,
+resdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+visit int DEFAULT 0,
+id VARCHAR(50)
+);
+
+INSERT INTO review VALUES(
+DEFAULT,
+'OO 대학교 합격 수기 (수학 3등급->수능 96점,전교1등)',
+'1. 매 수업마다 테스트 진행<br>
+수업 시작 전 테스트를 진행했고 친구들과 점수와 틀린문제를 공유하며 어디서 부족한 지 점검할 수 있었습니다. <br>
+처음에는 낮은 점수를 받을때마다 부끄러웠지만 다음엔 절대 그러지 않겠다는 다짐을 하고<br>
+열심히 공부할 수 있었기에 성장할 수 있었습니다.<br><br>
+2. 좋은 수업 분위기와 좋은 친구들<br>
+공부를 열심히하고 잘하는 친구들이 많아서 제가 조금이라도 공부를 대충한 날이 있으면 바로 티가 났습니다. <br>
+그래서 큰 슬럼프없이 공부를 집중할 수 있었습니다. <br>
+서광선생님의 수업을 듣는 학생들은 1등급인 학생이 1등급이 아닌 학생보다 더 많았습니다.<br>
+덕분에 공부자극을 받으며 더 열정적으로 할 수 있었습니다. <br>
+열심히 공부하면 김수현선생님이 선물도 주셔서 공부가 괴롭지 않았습니다!<br><br>
+3. 영재학습실과 개별질문시간<br>
+수업을 듣고 난 뒤 영재학습실에서 오답과 숙제를 90분정도 했습니다. <br>
+모르는 문제를 조교선생님께 질문하면 친절하게 설명해주셨고 이해가 잘 됐습니다. <br>
+학원에 다니기 전에는 앉아있는 시간이 길지 않아 공부하는 시간도 적었습니다. <br>
+스마트해법에 다니면서 앉아있는 시간이 늘었고 자연스레 공부하는 시간도 늘었습니다. <br>
+덕분에 고3내내 10시간 공부를 할 수 있었고 큰 성장을 이룰 수 있었습니다.<br><br>
+열심히 하고자하는 학생, 수학을 잘하고 싶은 학생은 스마트해법을 강추합니다.',
+DEFAULT,
+DEFAULT,
+'leeeunyoung'
+);

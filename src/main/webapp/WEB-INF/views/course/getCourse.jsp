@@ -364,7 +364,7 @@
             });
             $("#apply").on("click", function() { fn3() });
     });
-*/
+
     $(document).ready(function(){
         $("#apply").click(function(){
             // 회원만 수강 신청 가능
@@ -379,7 +379,28 @@
             }
         });
     });
+ */
 
+    $(document).ready(function(){
+        $("#apply").click(function(){
+            // 회원만 수강 신청 가능
+            if(${sid eq null }){
+                alert("수강신청은 로그인 후 가능합니다.");
+                window.location.href = '${path1}/user/loginForm';
+            } else if (${sid ne null && isEnroll eq false }){
+                if (${course.curr_num == course.total_num }) {
+                    alert("모집이 마감된 강의입니다.");
+                    window.location.href = '${path1}/course/list.do';
+                } else {
+                    window.location.href = '${path1}/course/signIn?price=${total_price}&cno=${course.cno}';
+                }
+            } else {
+                //if (${sid ne null && isEnroll eq true })
+                    alert("이미 수강신청한 강의입니다. ");
+                    window.location.href = '${path1}/course/list.do';
+            }
+        });
+    });
 </script>
 <!-- 푸터 부분 인클루드 -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
