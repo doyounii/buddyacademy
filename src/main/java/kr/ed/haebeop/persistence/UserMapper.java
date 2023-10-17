@@ -1,17 +1,18 @@
-package kr.ed.haebeop.service;
+package kr.ed.haebeop.persistence;
 
 import kr.ed.haebeop.domain.User;
+import org.apache.ibatis.annotations.Mapper;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public interface UserService {
+@Mapper
+public interface UserMapper {
     public List<User> userList();
     public int userCount();
     public User getUser(String id);
     public User signIn(User mdto);
     public User loginCheck(User mdto);
-    public boolean logIn(HttpServletRequest request) throws Exception;
+    public User logIn(User mdto);
     public void userInsert(User mdto);
     public void userUpdate(User mdto);
     public void userDelete(String id);

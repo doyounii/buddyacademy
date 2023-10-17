@@ -18,7 +18,6 @@
   <!-- Bulma Version 0.9.0-->
   <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
   <link rel="stylesheet" type="text/css" href="${path1 }/resources/css/admin.css">
-  <script async type="text/javascript" src="${path1 }/resources/js/bulma.js"></script>
 
   <style>
     .column.is-6, .column.is-6-tablet { width: 100%; }
@@ -36,23 +35,23 @@
           회원관리
         </p>
         <ul class="menu-list">
-          <%--          <li><a class="is-active">Dashboard</a></li>--%>
+<%--          <li><a class="is-active">Dashboard</a></li>--%>
           <li><a href="${path1 }/admin/userList.do">회원목록 조회 및 변경</a></li>
-          <%--          <li>--%>
-          <%--            <a>수강 내역 관리</a>--%>
-          <%--            <ul>--%>
-          <%--              <li><a>내역 1</a></li>--%>
-          <%--              <li><a>내역 2</a></li>--%>
-          <%--              <li><a>내역 3</a></li>--%>
-          <%--              <li><a>내역 4</a></li>--%>
-          <%--            </ul>--%>
-          <%--          </li>--%>
+<%--          <li>--%>
+<%--            <a>수강 내역 관리</a>--%>
+<%--            <ul>--%>
+<%--              <li><a>내역 1</a></li>--%>
+<%--              <li><a>내역 2</a></li>--%>
+<%--              <li><a>내역 3</a></li>--%>
+<%--              <li><a>내역 4</a></li>--%>
+<%--            </ul>--%>
+<%--          </li>--%>
         </ul>
         <p class="menu-label">
           수강신청 관리
         </p>
         <ul class="menu-list">
-          <li><a>수강신청 관리</a></li>
+          <li><a href="${path1 }/admin/enrollList">수강신청 관리</a></li>
           <li><a>개강일정 관리</a></li>
         </ul>
         <p class="menu-label">
@@ -97,19 +96,29 @@
               <p class="card-header-title">
                 회원 목록
               </p>
+                <div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>${userList.id }</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
               <a href="#" class="card-header-icon" aria-label="more options">
                   <span class="icon">
                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                   </span>
               </a>
             </header>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
-    <jsp:include page="../include/footer.jsp" />
-
+<%--        <jsp:include page="../include/footer.jsp" />--%>
+<script async type="text/javascript" src="${path1 }/resources/js/bulma.js"></script>
 </body>
 </html>

@@ -47,7 +47,7 @@
                 <a href="${path0 }/course/mypageCourse?complete=0">
                   <i class="icofont-user has-text-white"> 마이페이지</i>
                 </a>
-                <a href="${path0 }/admin/list">
+                <a href="${path0 }/admin/">
                   <i class="icofont-google-map has-text-white"> 관리자 페이지</i>
                 </a>
               </c:if>

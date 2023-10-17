@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="path1" value="${pageContext.request.contextPath }" />
+<c:set var="path1" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,43 +20,64 @@
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
+
+    <style>
+        td { height: 40px; margin: 0px;}
+        input { width:400px; float:left; margin-bottom: 0px; }
+        header { height: 150px; }
+        ul { list-style: none; }
+
+        #content { width: 100%; height: 100%; overflow: hidden; margin: 0px; padding: 0px;}
+        .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: center; color:#00A2FF; padding-top:36px; padding-bottom:20px; }
+        .container { width: 450px; margin: 10px auto; padding: 24px; height:auto; overflow-y:auto; }
+        #frm1 { width : 400px; margin: 0px auto; }
+        table tbody td { padding: 0px; }
+
+        .find_wrap { text-align: center; }
+        /* .find_wrap li { float: left; margin-left: 50px; list-style: none; } */
+
+    </style>
 </head>
 <body>
+
 <header id="header">
 
 </header>
+    <div class="content container" id="content">
+        <h2 class="title">스마트 해법</h2>
 
-<div class="content" id="con">
-    <div class="row column text-center">
-        <h2 class="h1">로그인</h2>
-        <hr>
         <div class="container">
-            <form action="${path1 }/user/signin" method="post" name="loginForm">
+            <form action="${path1 }/user/login" method="post" name="loginForm">
                 <div class="table_form_wrap">
                     <table class="table_form">
                         <tbody>
                         <tr>
-                            <th><label for="id">아이디</label></th>
                             <td><input type="text" name="id" id="id" size="100" class="single100" placeholder="아이디 입력" required>
                                 <!--  pattern="^[a-z0-9]+$"  -->
                             </td>
                         </tr>
                         <tr>
-                            <th><label for="pw">비밀번호</label></th>
                             <td><input type="password" name="pw" id="pw"  class="single100" placeholder="비밀번호 입력" required>
                                 <!--  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  -->
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="submit" class="button" value="로그인">
-                                <input type="reset" class="button" value="취소">
+                                <input type="submit" class="button" value="로그인" style="height: 55px; border-radius: 5px;">
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </form>
+            <div class="find_wrap">
+                <a href="${path1 }/user/agree">회원가입</a>
+                <!-- <ul>
+                    <li><a href="">아이디 찾기</a></li>
+                    <li>|</li>
+                    <li><a href="${path1 }/user/agree">회원가입</a></li>
+                </ul> -->
+            </div>
             <script>
                 function loginFaiure() {
                     alert("로그인 실패");
@@ -64,9 +85,8 @@
             </script>
         </div>
     </div>
-</div>
-<footer id="footer" class="footer-nav row expanded collapse">
+    <footer id="footer" class="footer-nav row expanded collapse">
 
-</footer>
+    </footer>
 </body>
 </html>

@@ -30,5 +30,5 @@ public interface CourseService {
 
     public User getUserName(String id);
     public Enroll isEnroll(Enroll enroll);
-
+    public List<Enroll> enrollList();
 }

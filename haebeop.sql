@@ -361,3 +361,5 @@ DEFAULT,
 DEFAULT,
 'leeeunyoung'
 );
+
+SELECT * FROM enroll;

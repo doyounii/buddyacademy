@@ -75,4 +75,6 @@ public class CourseServiceImpl implements CourseService {
         return courseMapper.isEnroll(enroll);
     }
 
+    @Override
+    public List<Enroll> enrollList() { return courseMapper.enrollList(); }
 }
