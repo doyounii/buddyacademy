@@ -74,60 +74,60 @@
                 </div>
             </section>
             <section class="info-tiles">
-<%--                <div class="tile is-ancestor has-text-centered">--%>
-<%--                    <div class="tile is-parent">--%>
-<%--                        <article class="tile is-child box">--%>
-<%--                            <p class="title">439k</p>--%>
-<%--                            <p class="subtitle">Users</p>--%>
-<%--                        </article>--%>
-<%--                    </div>--%>
-<%--                    <div class="tile is-parent">--%>
-<%--                        <article class="tile is-child box">--%>
-<%--                            <p class="title">59k</p>--%>
-<%--                            <p class="subtitle">Products</p>--%>
-<%--                        </article>--%>
-<%--                    </div>--%>
-<%--                    <div class="tile is-parent">--%>
-<%--                        <article class="tile is-child box">--%>
-<%--                            <p class="title">3.4k</p>--%>
-<%--                            <p class="subtitle">Open Orders</p>--%>
-<%--                        </article>--%>
-<%--                    </div>--%>
-<%--                    <div class="tile is-parent">--%>
-<%--                        <article class="tile is-child box">--%>
-<%--                            <p class="title">19</p>--%>
-<%--                            <p class="subtitle">Exceptions</p>--%>
-<%--                        </article>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-            <c:if test="${enrollNum ne null}">
-                <p>학습 현황 그래프</p>
-                <progress class="progress is-large is-success" style="height:2rem;" value="${enrollNum*size }" max="100"></progress>
-                <c:if test="${enrollNum*size >= 100 }">
-                    <p>❤️👍💖💫모든 강좌를 수강완료하였습니다!💝🎉🎊🎇</p>
+                <%--                <div class="tile is-ancestor has-text-centered">--%>
+                <%--                    <div class="tile is-parent">--%>
+                <%--                        <article class="tile is-child box">--%>
+                <%--                            <p class="title">439k</p>--%>
+                <%--                            <p class="subtitle">Users</p>--%>
+                <%--                        </article>--%>
+                <%--                    </div>--%>
+                <%--                    <div class="tile is-parent">--%>
+                <%--                        <article class="tile is-child box">--%>
+                <%--                            <p class="title">59k</p>--%>
+                <%--                            <p class="subtitle">Products</p>--%>
+                <%--                        </article>--%>
+                <%--                    </div>--%>
+                <%--                    <div class="tile is-parent">--%>
+                <%--                        <article class="tile is-child box">--%>
+                <%--                            <p class="title">3.4k</p>--%>
+                <%--                            <p class="subtitle">Open Orders</p>--%>
+                <%--                        </article>--%>
+                <%--                    </div>--%>
+                <%--                    <div class="tile is-parent">--%>
+                <%--                        <article class="tile is-child box">--%>
+                <%--                            <p class="title">19</p>--%>
+                <%--                            <p class="subtitle">Exceptions</p>--%>
+                <%--                        </article>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+                <c:if test="${enrollNum ne null}">
+                    <p>학습 현황 그래프</p>
+                    <progress class="progress is-large is-success" style="height:2rem;" value="${enrollNum*size }" max="100"></progress>
+                    <c:if test="${enrollNum*size >= 100 }">
+                        <p>❤️👍💖💫모든 강좌를 수강완료하였습니다!💝🎉🎊🎇</p>
+                    </c:if>
                 </c:if>
-            </c:if>
             </section>
             <div class="columns" style="margin:0; padding:0">
                 <div class="columns features" style="margin:0; padding:0">
                     <div class="card-container">
-                    <c:forEach var="enroll" items="${getEnrollList }">
-                    <div class="column is-4">
-                        <div class="card is-shady">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img src="${path1 }/resources/upload/${enroll.imgsrc1 }" alt="Placeholder image" class="modal-button" data-target="modal-image2">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    <h4>${enroll.course_name }</h4>
-                                    <h4>수강 종료일 | ${enroll.end_date }</h4>
+                        <c:forEach var="enroll" items="${getEnrollList }">
+                            <div class="column is-4">
+                                <div class="card is-shady">
+                                    <div class="card-image">
+                                        <figure class="image is-4by3">
+                                            <img src="${path1 }/resources/upload/${enroll.imgsrc1 }" alt="Placeholder image" class="modal-button" data-target="modal-image2">
+                                        </figure>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="content">
+                                            <h4>${enroll.course_name }</h4>
+                                            <h4>수강 종료일 | ${enroll.end_date }</h4>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    </c:forEach>
+                        </c:forEach>
                         <c:if test="${empty getEnrollList }">
                             <tr>
                                 <td colspan="4">수강 종료된 강좌가 없습니다.</td>

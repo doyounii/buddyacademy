@@ -278,9 +278,9 @@
         </div>
         <div class="column is-4">
             <aside class="menu">
-				<!-- <span class="box has-text-white has-text-weight-semibold has-text-centered is-size-5" style="color: black;">
-					과정정보
-				</span> -->
+                <!-- <span class="box has-text-white has-text-weight-semibold has-text-centered is-size-5" style="color: black;">
+                    과정정보
+                </span> -->
                 <div class="box view_info has-text-white has-text-weight-semibold has-text-centered is-size-5">
                     <span class="course" style="color: black;">과정정보</span>
                     <dl>
@@ -304,23 +304,23 @@
                     <li>
                         <!-- 수강료 안내 -->
                         <div class="price_in">
-                        <div class="price_scroll mCustomScrollbar _mCS_1 mCS_no_scrollbar">
-                            <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
-                                <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
-                                    <p class="price_h4">수강료</p>
-                                    <span class="pointColor price" id="price"><strong id="course_price" class="eng">${course.price}원</strong></span>
-                                </div>
-                            <!--<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
-                                <div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 0px; top: 0px;">
-                                    <div class="mCSB_dragger_bar" style="line-height: 30px;">
+                            <div class="price_scroll mCustomScrollbar _mCS_1 mCS_no_scrollbar">
+                                <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
+                                    <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+                                        <p class="price_h4">수강료</p>
+                                        <span class="pointColor price" id="price"><strong id="course_price" class="eng">${course.price}원</strong></span>
                                     </div>
+                                    <!--<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
+                                        <div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 0px; top: 0px;">
+                                            <div class="mCSB_dragger_bar" style="line-height: 30px;">
+                                            </div>
+                                        </div>
+                                            <div class="mCSB_draggerRail">
+                                            </div>
+                                        </div>
+                                    </div>-->
                                 </div>
-                                    <div class="mCSB_draggerRail">
-                                    </div>
-                                </div>
-                            </div>-->
                             </div>
-                        </div>
                         </div>
                         <!-- 최종 금액 -->
                         <div class="total">
@@ -397,8 +397,8 @@
                 }
             } else {
                 //if (${sid ne null && isEnroll eq true })
-                    alert("이미 수강신청한 강의입니다. ");
-                    window.location.href = '${path1}/course/list.do';
+                alert("이미 수강신청한 강의입니다. ");
+                window.location.href = '${path1 }/course/mypageCourse?complete=0';
             }
         });
     });

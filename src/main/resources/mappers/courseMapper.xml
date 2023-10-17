@@ -21,7 +21,23 @@
         order by cno desc LIMIT #{postStart}, #{postCount}
         ]]>
     </select>
-    <select id="courseCount" resultType="integer">
+    <select id="getCourse" resultType="kr.ed.haebeop.domain.Course">
+        select * from course where cno = #{cno }
+    </select>
+    <insert id="insertCourse">
+        INSERT INTO course VALUES(DEFAULT, #{course_name}, #{price}, #{start_date}, #{end_date},
+                                  #{total_num}, #{curr_num}, #{teacher_name}, #{content},
+                                  #{book_name}, #{book_price}, #{imgsrc1}, #{imgsrc2})
+    </insert>
+    <update id="updateCourse">
+        UPDATE course SET course_name = #{course_name} WHERE cno = #{cno}
+    </update>
+    <delete id="deleteCourse">
+        DELETE FROM course WHERE cno = #{cno}
+    </delete>
+
+    <!-- 글 수 카운트 -->
+    <select id="countCourse" resultType="integer">
         <![CDATA[
         select count(*) from course
         ]]>
@@ -38,11 +54,9 @@
             </if>
         </where>
     </select>
-    <select id="getCourse" resultType="kr.ed.haebeop.domain.Course">
-        select * from course where cno = #{cno }
-    </select>
+
     <insert id="insertEnroll">
-        INSERT INTO enroll VALUES(DEFAULT, #{cno }, #{id }, DEFAULT, #{book }, #{enroll_price },#{book_name })
+        INSERT INTO enroll VALUES(DEFAULT, #{cno }, #{id }, DEFAULT, DEFAULT, #{enroll_price },10000)
     </insert>
     <!-- 등록할 때 강의 테이블의 현재 신청 인원 +1 추가-->
     <update id="updateStudentNum">

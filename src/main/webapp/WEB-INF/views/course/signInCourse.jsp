@@ -229,8 +229,8 @@
     <ul class="mr-5">
         <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
         <li><a href="${path1}/course/list.do">수강신청</a></li>
-        <li class=""><a href="${path1 }/course/getCourse?cno=${course.cno }" aria-current="page">수강신청</a></li>
-        <li class="is-active"><a href="${path1}/course/signIn?cno=${course.cno}&book=${book }" aria-current="page">결제하기</a></li>
+        <li><a href="${path1 }/course/getCourse?cno=${course.cno }" aria-current="page">수강신청</a></li>
+        <li><a href="${path1}/course/signIn?cno=${course.cno}&book=${book }" aria-current="page">결제하기</a></li>
     </ul>
 
     <p class="title has-text-centered mt-1 mb-2">결제하기</p>
@@ -323,11 +323,11 @@
                         </div>
                         <!-- 신청 버튼-->
                         <form action="${path1 }/course/signIn" method="post">
-                        <div class="applyBtn">
-                            <a href="${path1 }/course/getCourse?cno=${course.cno }" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>취소</a>
-                            <button id="apply" class="apply bgColor"><i class="icofont-credit-card"></i> 결제하기</button>
-                        </div>
-                        <!-- hidden으로 form 넘기기 -->
+                            <div class="applyBtn">
+                                <a href="${path1 }/course/getCourse?cno=${course.cno }" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>취소</a>
+                                <button id="apply" class="apply bgColor"><i class="icofont-credit-card"></i> 결제하기</button>
+                            </div>
+                            <!-- hidden으로 form 넘기기 -->
                             <c:if test="${book == 1}">
                                 <input type="hidden" id="enroll_price" name="enroll_price" value="${course.book_price +course.price }">
                             </c:if>

@@ -11,18 +11,38 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CourseServiceImpl implements CourseService{
+public class CourseServiceImpl implements CourseService {
     @Autowired
     private CourseMapper courseMapper;
 
     @Override
-    public List<Course> courseList(Page page) {
+    public List<Course> getCourseList(Page page) throws Exception {
         return courseMapper.getCourseList(page);
     }
 
     @Override
-    public Course getCourse(int num) {
-        return courseMapper.getCourse(num);
+    public Course getCourse(int cno) throws Exception {
+        return courseMapper.getCourse(cno);
+    }
+
+    @Override
+    public void insertCourse(Course course) throws Exception {
+        courseMapper.insertCourse(course);
+    }
+
+    @Override
+    public void updateCourse(Course course) throws Exception {
+        courseMapper.updateCourse(course);
+    }
+
+    @Override
+    public void deleteCourse(int cno) throws Exception {
+        courseMapper.deleteCourse(cno);
+    }
+
+    @Override
+    public int countCourse(Page page) throws Exception {
+        return courseMapper.countCourse(page);
     }
 
     @Override
@@ -55,8 +75,4 @@ public class CourseServiceImpl implements CourseService{
         return courseMapper.isEnroll(enroll);
     }
 
-    @Override
-    public int courseCount(Page page) {
-        return courseMapper.courseCount(page);
-    }
 }
