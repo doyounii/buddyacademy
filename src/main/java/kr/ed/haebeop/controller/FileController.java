@@ -1,4 +1,5 @@
 package kr.ed.haebeop.controller;
+
 import kr.ed.haebeop.domain.FileBoard;
 import kr.ed.haebeop.domain.FileDTO;
 import kr.ed.haebeop.domain.FileVO;
@@ -35,7 +36,7 @@ public class FileController {
 
     @GetMapping("fileupload1.do")
     public String fileUploadForm(){
-        return "/fileboard/fileupload";
+        return "/file/fileupload";
     }
 
     @PostMapping("fileupload1.do")
@@ -111,7 +112,7 @@ public class FileController {
     public String getFileList(Model model) throws Exception {
         List<FileVO> fileboardList = fileService.getFileList();
         model.addAttribute("fileboardList", fileboardList);
-        return "/fileboard/filelist1";
+        return "/file/filelist";
     }
 
     //getFileboard.do
@@ -119,7 +120,7 @@ public class FileController {
     public String getFileboard(@RequestParam int postNo, Model model) throws Exception {
         FileVO fileboard = fileService.getFilebord(postNo);
         model.addAttribute("fileboard", fileboard);
-        return "/fileboard/getFileboard";
+        return "/file/getFileboard";
     }
 
     @GetMapping("removeFileboard.do")
@@ -144,7 +145,7 @@ public class FileController {
     public String modifyFileboard(@RequestParam int postNo, Model model) throws Exception {
         FileVO fileboard = fileService.getFilebord(postNo);
         model.addAttribute("fileboard", fileboard);
-        return "/fileboard/modifyFileboard";
+        return "/file/modifyFileboard";
     }
 
     @PostMapping("fileRemove.do")
@@ -157,6 +158,6 @@ public class FileController {
         if (file.exists()) { // 해당 파일이 존재하면
             file.delete(); // 파일 삭제
         }
-        return "/fileboard/getFileboard.do?postNo="+postNo;
+        return "/file/getFileboard.do?postNo="+postNo;
     }
 }

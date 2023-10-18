@@ -26,22 +26,22 @@
     수강신청 관리
   </p>
   <ul class="menu-list">
-    <li><a href="${path1 }/admin/enrollList">수강신청 관리</a></li>
-    <li><a>개강일정 관리</a></li>
+    <li><a href="${path1 }/admin/enrollList">수강 신청 관리</a></li>
+    <li><a>개강 일정 관리</a></li>
   </ul>
   <p class="menu-label">
-    시범강의 관리
+    시범 강의 관리
   </p>
   <ul class="menu-list">
-    <li><a>시범강의 관리</a></li>
+    <li><a href="${path1 }/admin/video/list.do">시범 강의 관리</a></li>
   </ul>
   <p class="menu-label">
     커뮤니티 관리
   </p>
   <ul class="menu-list">
-    <li><a>공지사항 관리</a></li>
-    <li><a>자주 묻는 질문 관리</a></li>
-    <li><a>후기 관리</a></li>
+    <li><a href="${path1 }/admin/notice/list.do">공지사항 관리</a></li>
+
+    <li><a href="${path1 }/admin/review/list.do">후기 관리</a></li>
   </ul>
   <p class="menu-label">
     자료실 관리

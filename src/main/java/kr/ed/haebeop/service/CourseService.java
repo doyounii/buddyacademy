@@ -10,6 +10,8 @@ import java.util.List;
 public interface CourseService {
     public List<Course> getCourseList(Page page) throws Exception;
 
+    public List<Course> courseList() throws Exception;
+
     public Course getCourse(int cno) throws Exception;
 
     public void insertCourse(Course course) throws Exception;
@@ -33,5 +35,4 @@ public interface CourseService {
     public List<Enroll> enrollList(Page page);
     public void enrollDelete(int eno);
     public int countEnroll(Page page);
-
 }

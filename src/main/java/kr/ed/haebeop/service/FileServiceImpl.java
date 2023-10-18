@@ -1,8 +1,8 @@
 package kr.ed.haebeop.service;
 
-import kr.ed.haebeop.persistence.FilePerisistence;
 import kr.ed.haebeop.domain.FileDTO;
 import kr.ed.haebeop.domain.FileVO;
+import kr.ed.haebeop.repository.FileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,26 +12,26 @@ import java.util.List;
 public class FileServiceImpl implements FileService {
 
     @Autowired
-    private FilePerisistence filePerisistence;
+    FileRepository fileRepository;
 
     @Override
     public void insertFileboard(FileVO fileboard) throws Exception {
-        filePerisistence.insertFileboard(fileboard);
+        fileRepository.insertFileboard(fileboard);
     }
 
     @Override
     public List<FileVO> getFileList() throws Exception {
-        return filePerisistence.getFileList();
+        return fileRepository.getFileList();
     }
 
     @Override
     public List<FileDTO> getFileGroupList(int postNo) throws Exception {
-        return filePerisistence.getFileGroupList(postNo);
+        return fileRepository.getFileGroupList(postNo);
     }
 
     @Override
     public FileVO getFilebord(int postNo) throws Exception {
-        return filePerisistence.getFilebord(postNo);
+        return fileRepository.getFilebord(postNo);
     }
 
     @Override
@@ -41,16 +41,24 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public void removeFileboard(int postNo) throws Exception {
-        filePerisistence.removeFileboard(postNo);
+        fileRepository.removeFileboard(postNo);
     }
 
     @Override
     public void fileRemove(int no) throws Exception {
-        filePerisistence.fileRemove(no);
+        fileRepository.fileRemove(no);
     }
 
     @Override
     public FileDTO getFile(int no) throws Exception {
-        return filePerisistence.getFile(no);
+        return fileRepository.getFile(no);
     }
+
+    @Override
+    public void removeAllFile(int postNo) throws Exception {
+        fileRepository.removeAllFile(postNo);
+
+    }
+
+
 }

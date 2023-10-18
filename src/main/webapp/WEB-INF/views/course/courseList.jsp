@@ -10,9 +10,7 @@
     <title>수강신청</title>
     <jsp:include page="../include/head.jsp" />
     <style>
-        .breadcrumb a {
-            color: #464646;
-        }
+        .breadcrumb a { color: #464646; }
         .pagination-link.is-current {
             background-color:#2B3A55;
             border-color: #2B3A55;
@@ -35,9 +33,8 @@
     <ul class="mr-5">
         <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
         <li><a href="${path1}/course/list.do">수강신청</a></li>
-        <li class="is-active"><a href="#" aria-current="page">수강신청</a></li>
+        <li><a href="${path1}/course/list.do">수강신청</a></li>
     </ul>
-
     <p class="title has-text-centered mt-1 mb-2">수강신청</p>
 </nav>
 
@@ -80,7 +77,7 @@
                         <p class="is-size-5" style="margin-top: -12px;">
                             <a href="${path1 }/course/getCourse?cno=${course.cno }">${course.course_name }</a>
                         </p>
-                        <span>수강료 : ${course.price }원</span>
+                        <span>수강료 : <fmt:formatNumber value="${course.price }" pattern="#,###" />원</span>
                     </div>
                     <div class="column is-3" style="display: flex; flex-direction: column; justify-content: center;">
                         <p style="margin-top: -12px; text-align: center">
@@ -91,7 +88,6 @@
                                 <a class="button is-dark" href="${path1 }/course/insert.do">수정</a>
                                 <a class="button is-danger" href="${path1 }/course/delete.do?cno=${course.cno}">삭제</a>
                             </c:if>
-
                         </p>
                     </div>
                 </article>

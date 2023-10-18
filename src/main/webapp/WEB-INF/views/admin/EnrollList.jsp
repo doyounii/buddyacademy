@@ -23,6 +23,9 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
         .column.is-6 { width:100%; }
+        *{
+            font-family: 'Nanum Gothic Coding', monospace;
+        }
         .card-header { font-size: 1.2em; font-family: "Nanum Gothic Coding"; font-weight: bolder; color:#00A2FF; margin-top:20px; margin-bottom: 20px; }
         .table td, .table th { font-size: 0.8em; }
         .hero.welcome .title, .hero.welcome .subtitle { font-family: "Nanum Gothic Coding";  }
@@ -107,7 +110,7 @@
                             <tbody>
                             <c:forEach var="enroll" items="${enrollList }" varStatus="status">
                             <tr>
-                                <td class="item1">${status.count }</td>
+                                <td class="item1">${status.count + ((curPage-1)*10)}</td>
                                 <td class="item2">${enroll.course_name }</td>
                                 <td class="item3"><a href="${path1 }/admin/aGetUser?id=${enroll.id }" title="2016–17 UEFA Champions League">${enroll.name }</a></td>
                                 <td class="item4">

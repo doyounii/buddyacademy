@@ -5,7 +5,8 @@ import kr.ed.haebeop.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -16,48 +17,28 @@ public class TestController {
     private TestService testService;
 
     @GetMapping("getTestList")
-    public String getTestList(Model model) throws Exception {
-        List<Test> getTestList = testService.getTestList();
-        model.addAttribute("getTestList", getTestList);
+    public String getTestList(Model model) {
+        List<Test> testList = testService.getTestList();
+        model.addAttribute("testList", testList);
         return "/test/getTestList";
     }
 
     @GetMapping("getTestList2")
-    public String getTestList2(Model model) throws Exception {
-        List<Test> getTestList2 = testService.getTestList2();
-        model.addAttribute("getTestList", getTestList2);
+    public String getTestList2(Model model) {
+        List<Test> testList = testService.getTestList2();
+        model.addAttribute("testList", testList);
         return "/test/getTestList";
     }
 
     @GetMapping("getTestList3")
-    public String getTestList3(Model model) throws Exception {
-        List<Test> getTestList3 = testService.getTestList3();
-        model.addAttribute("getTestList", getTestList3);
+    public String getTestList3(Model model) {
+        List<Test> testList = testService.getTestList3();
+        model.addAttribute("testList", testList);
         return "/test/getTestList";
     }
 
-    @GetMapping("testInsert")
-    public String testInsert(Model model) throws Exception {
-        return "/test/testInsert";
-    }
-
-    @PostMapping("testInsert")
-    @ResponseBody
-    public Test testInsertPro(@ModelAttribute Test test) throws Exception{
-        testService.insert(test);
-        return test;
-    }
-
-    @GetMapping("testInsert2")
-    public String testInsert2(Model model) throws Exception {
-        return "/test/testInsert2";
-    }
-
-    @PostMapping("testInsert2")
-    @ResponseBody
-    public Test testInsertPro2(@ModelAttribute Test test) throws Exception{
-        testService.insert(test);
-        return test;
-    }
+    //ModelAndView로 리턴하여 진행하는 경우
+    //ModelAndView mav = new ModelAndView("/test/getTestList");
+    //mav.addObject("testList", testList);
+    //return mav;
 }
-

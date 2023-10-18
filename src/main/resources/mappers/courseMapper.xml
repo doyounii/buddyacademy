@@ -21,6 +21,11 @@
         order by cno desc LIMIT #{postStart}, #{postCount}
         ]]>
     </select>
+
+    <select id="courseList" resultType="kr.ed.haebeop.domain.Course">
+        select * from course
+    </select>
+
     <select id="getCourse" resultType="kr.ed.haebeop.domain.Course">
         select * from course where cno = #{cno }
     </select>
@@ -78,7 +83,7 @@
         update enroll set complete =1 where eno=#{eno }
     </update>
     <select id="getUserName" resultType="kr.ed.haebeop.domain.User">
-        select name from user where id = #{id }
+        select name from user where id = #{id };
     </select>
     <select id="enrollList" resultType="kr.ed.haebeop.domain.Enroll">
         <![CDATA[

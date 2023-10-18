@@ -178,7 +178,8 @@ originFile varchar(45) DEFAULT NULL,	--
 saveFile varchar(45) DEFAULT NULL
 );
 
-
+SELECT e.eno, e.cno, c.course_name, u.name,e.id, e.complete, e.book, e.enroll_price
+        FROM enroll e INNER JOIN course c ON e.cno = c.cno INNER JOIN user u ON e.id = u.id
 CREATE TABLE fileobj (
 	no int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	postno INT NOT NULL,
@@ -291,12 +292,14 @@ CREATE TABLE fileInfo(
     saveFile VARCHAR(300) NOT NULL);
 
 -- 자료실 테이블 생성
-CREATE TABLE fileboard (
-    articleno int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    id varchar(16) NOT NULL,
-    title varchar(100) NOT NULL,
-    content varchar(2000) NOT NULL,
-    regdate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP);
+
+-- 교재게시판 테이블 생성 
+CREATE TABLE bookboard (
+   bno int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   title varchar(100) NOT NULL,
+   content varchar(2000) NOT NULL,
+   sregdate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
 
 CREATE TABLE fileinfo(
@@ -369,8 +372,255 @@ INNER JOIN user u ON e.id = u.id
 WHERE u.id = 'admin' AND e.complete = 1;
 
 SELECT e.eno, e.cno, c.course_name, u.name,e.id, e.complete, e.book, e.enroll_price 
-FROM enroll e INNER JOIN course c ON e.cno = c.cno INNER JOIN user u ON e.id = u.id;
+FROM enroll e INNER JOIN course c ON e.cno = c.cno INNER JOIN user u ON e.id = u.id ORDER BY e.eno DESC LIMIT 0,10;
 
 DELETE FROM enroll WHERE eno =#{eno }
 
-select count(*) from enroll
+ () from enro*ll
+SELECT COUNT(*)
+        FROM enroll e INNER JOIN course c ON e.cno = c.cno INNER JOIN user u ON e.id = u.id;
+        
+CREATE table video(
+no INT AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(200) NOT NULL, -- 강의 제목
+img VARCHAR(2000) NOT NULL, -- List에 올라갈 이미지
+content VARCHAR(2000) NOT NULL, -- 강의 내용
+videofile VARCHAR(5000) NOT NULL, -- 영상 경로
+teacher VARCHAR(50), -- 강의 선생님
+resdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+visit int DEFAULT 0
+);
+
+INSERT INTO video VALUES(
+DEFAULT,
+'[파이널 체크포인트]  이소윤의 문학+독서',
+'soyoon.png',
+'수능연계 핵심만 뽑아서 주머니 속으로,<br> 포켓 수능연계
+<br><br>
+■ 강의 특징<br><br>
+단 7강으로 수능특강, 수능완성 알맹이만!<br>
+⇨ 공통 영역(독서, 문학)의 핵심 요소를 정확하게 뽑아서<br>
+군더더기 없이 속도감 있는 전개에 학습 탄력을 더한다.',
+'video1.mp4',
+'이소윤 선생님',
+DEFAULT,
+DEFAULT
+);
+
+INSERT INTO video VALUES(
+DEFAULT,
+'[수능특강]  이은영의 확률과 통계',
+'eunyoung.png',
+'중학교 개념부터 정리가 필요한<br> 기초 부족 수강생들 모여라!
+<br><br>
+■ 강의 특징<br><br>
+핵심을 확실하게 알려주는 강좌<br>
+기본에 충실한 강좌<br>
+쉽게 설명하는 강좌',
+'video2.mp4',
+'이은영 선생님',
+DEFAULT,
+DEFAULT
+);
+
+INSERT INTO video VALUES(
+DEFAULT,
+'[수능완성]  서광의 영어',
+'seo.png',
+'이제 중요한 건 <시간 단축>이다!<br><br>
+각 문장을 연결 지어 이해하고, <br>이를 통해 모르는 부분을 추론해가면,<br>
+완벽히 이해하지 못한 지문이라도<br> 어쨌든 정답은 찾을 수 있기 때문!',
+'video3.mp4',
+'서광 선생님',
+DEFAULT,
+DEFAULT
+);
+
+INSERT INTO video VALUES(
+DEFAULT,
+'[수능특강]  한선의 사회문화',
+'han.png',
+'문제와 개념을 밀도있게 반복하는 한선쌤만의 강의!<br><br>
+1. 처음 사문을 공부하는 학생은 꼭 완강해주세요!<br>
+
+2. 개념홀릭에 이어 2회독 하는 학생은 문제만 찾아들을 수도 있지만,<br>
+
+완강하면 더더욱 탄탄하게 개념을 익히고,<br> 문제 유형 파악 및 선지 분석을 할 수 있습니다.',
+'video4.mp4',
+'한선 선생님',
+DEFAULT,
+DEFAULT
+);
+
+INSERT INTO video VALUES(
+DEFAULT,
+'[수능특강]  오태훈의 지구과학',
+'5.png',
+'핵심을 확실하고 꼼꼼하게<br> 지구과학1 전 범위를 끝내보아요.<br><br>
+■ 강의 특징<br><br>
+꼼꼼한 강좌<br>
+핵심을 확실하게 알려주는 강좌<br>
+쉽게 설명하는 강좌',
+'video5.mp4',
+'오태훈 선생님',
+DEFAULT,
+DEFAULT
+);
+
+CREATE TABLE faq (
+fno INT AUTO_INCREMENT PRIMARY KEY,
+question VARCHAR(1000) NOT NULL,
+answer VARCHAR(1000) NOT NULL,
+cnt INT DEFAULT 0 NOT NULL
+);
+
+
+INSERT INTO faq VALUES(
+DEFAULT,
+'ZOOM 관련 화면 캡쳐 차단 메세지 해결방법!',
+'최근에 ZOOM(화상 미팅) 프로그램 사용이 많이 늘고 있습니다.<br>
+보안프로그램으로 사용하고있는 kollus(동영상 보안프로그램)에서는<br>
+zoom을 캡쳐프로그램으로 인식하여 "에러 1002 코드"를 팝업하며 동영상을 중지 시킬 수 있습니다.<br>
+그런 경우에는 zoom 프로그램을 종료 후 접속하면 문제없이 접속 가능합니다.',
+DEFAULT
+);
+
+INSERT INTO faq VALUES(
+DEFAULT,
+'수강확인증은 어떻게 받을 수 있나요?',
+'많은 분들이 청년취업지원, 제대군인 지원, 학교 내 어학지원 등<br>
+각종 지원 사업을 통해 수강을 하고 계십니다.<br>
+지원 사업이다보니 수강확인증을 필요로 하시는데요!<br>
+신청방법은 카카오톡 플친으로 성함과 인강사이트 아이디를 알려주시고<br>
+필요한 확인증을 요청하시면 간단한 수강이력 확인 후 발급해드립니다.',
+DEFAULT
+);
+
+INSERT INTO faq VALUES(
+DEFAULT,
+'환불 규정에 대해 알려주세요.',
+'정규과정 상품 환불정책<br>
+① 수강시작 후 7일 미만 & 5강 미만 수강 시에는 100% 환불 가능<br>
+② 수강시작 후 7일 이상 또는 5강 이상 수강 시에는 잔여일에 대한 일할 계산 환불 가능<br>
+③ 수강시작 후 수강기간 또는 수강한 강의 수가 전체의 50% 이상 경과한 경우 환불 불가<br>
+※ 환불금액 = 결제금액 – {정상가*(실제 수강일/전체 수강일)}<br>
+    단, 할인적용 등록 시 정상가를 기준으로 환불됨을 숙지해주세요.<br>
+※ 전체 수강일은 복습기간을 제외한 수강일입니다.',
+DEFAULT
+);
+
+INSERT INTO faq VALUES(
+DEFAULT,
+'수강결제를 했는데 수강시작은 언제부터 가능한가요?',
+'수강결제와 함께 수강일 카운트가 바로 시작됩니다!<br>
+필히 확인 후 결제 해주시기 바랍니다.<br>
+수업의 특성상 교재를 가지고 강의를 들어야 하기 때문에<br>
+교재가 없는 경우 교재를 배송 받을 기간동안 수업을 들을 수 있도록<br>
+수업 전 공지사항에 샘플교재를 다운 받으실 수 있습니다.',
+DEFAULT
+);
+
+INSERT INTO faq VALUES(
+DEFAULT,
+'교재를 미리 구매하고 싶으면 어떻게 해야하나요?',
+'교재는 수강 신청 시에 함께 구매할 수 있으며,<br>
+과목마다 필요교재가 다르기 때문에<br>
+수강하려는 과목에 필수교재 확인 후 구매 부탁드립니다.<br><br>
+1.카르페디엠 : 카르페디엠SET(본교재,토익,워크북 3종)<br>
+*카르페디엠SET 구매하면 카르페디엠 1,2,3,4 수강 시 사용가능합니다.<br>
+2.카이로스 : 카이로스SET(본교재,서플리먼트 2종)<br>
+3.독해하이라이트 : 독해하이라이트SET(본교재,리딩북 2종)<br>
+  *리딩북의 경우 카르페디엠3,4에서도 사용되는 교재임으로 구매하신경우<br>
+   SET가 아닌 독해본교재 단품 구매해주세요.',
+DEFAULT
+);
+
+INSERT INTO faq VALUES(
+DEFAULT,
+'구독하기를 결제하면 어떤 혜택이 있나요?',
+'연간 전체구독권 및 전체구독권 구매하시면<br>
+6종 쿠폰이 자동결제 시 마다 지급이 됩니다.<br>
+
+연간결제는 사용 기간은 12개월 안으로 6종 쿠폰 사용 ,<br>
+월간결제는 사용 기간은 1개월 안으로 6종 쿠폰 사용이 가능합니다.<br>
+<br>
+
+<지급쿠폰의 종류><br>
+
+ - 오디오 북 : 2천 원 쿠폰<br>
+
+ - 중학 프리미엄: 단과과정 1만 원 쿠폰, 프리패스 과정 3만 원 쿠폰<br>
+
+ - 직업: 단과과정 1만 원 쿠폰, 패키지 과정 3만 원 쿠폰<br>
+
+ - 직업(컴퓨터활용능력): 특정 패키지 과정 1만 원 쿠폰',
+DEFAULT
+);
+
+INSERT INTO faq VALUES(
+DEFAULT,
+'회원 탈퇴는 어떻게 하나요?',
+'	
+회원 탈퇴 방법은 아래와 같습니다.<br>
+<br>
+
+1. 로그인<br>
+
+2. [마이페이지 > 회원정보수정] 메뉴 선택<br>
+
+3. [회원 탈퇴하기] 선택 후 진행',
+DEFAULT
+);
+
+INSERT INTO faq VALUES(
+DEFAULT,
+'모바일웹에서 문제콘텐츠는 어떻게 이용하나요?',
+'1. 안드로이드 계열 모바일 이용 환경<br>
+<br>
+안드로이드 버전 6.0이상에서 최적화되어 있습니다.<br>
+
+구형 안드로이드 핸드폰(갤럭시S4 이상)의 기본 인터넷 브라우저의 경우<br>
+문제은행 서비스 이용이 원활하지 않을 수 있습니다.<br>
+
+이 경우 아래와 같은 방법으로 문제를 해결하실 수 있습니다.<br><br>
+
+① 크롬 브라우저 이용<br>
+② 삼성 브라우저 앱 업데이트<br><br>
+
+2. iOS 계열 모바일 이용 환경<br><br>
+iOS 버전 9.3이상에서 안정적으로 서비스를 이용하실 수 있습니다.<br>
+
+설정>소프트웨어 업데이트 메뉴로 들어가<br>
+"신규 소프트웨어 업데이트"를 통해 버전 업데이트를 하시기 바랍니다.<br>
+<br>
+*수식입력을 제외한 모든 기능은 낮은 버전에서도 동일하게 이용 가능합니다.',
+DEFAULT
+);
+
+
+
+CREATE TABLE bookinfo(
+	NO INT AUTO_INCREMENT PRIMARY KEY,  -- 번호
+	articleno varchar(45) DEFAULT NULL,	-- 글번호
+	saveFolder varchar(45) DEFAULT NULL,	-- 저장 디렉토리
+	originFile varchar(45) DEFAULT NULL,	-- 
+	saveFile varchar(45) DEFAULT NULL
+);
+
+CREATE TABLE bookobj (
+	no int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	postno INT NOT NULL,
+	savefolder VARCHAR(400),
+	originfile VARCHAR(400),
+	savefile VARCHAR(800),
+	filesize LONG,
+	uploaddate VARCHAR(100)
+);
+
+CREATE TABLE bookboard (
+	postno int NOT NULL AUTO_INCREMENT PRIMARY KEY,	-- 글 번호
+	title VARCHAR(100) not null,   -- 글제목
+	content VARCHAR(1500) not null,    -- 글내용
+	regdate DATETIME DEFAULT CURRENT_TIMESTAMP(),   -- 작성일
+	visited INT DEFAULT 0   -- 조회수
+);

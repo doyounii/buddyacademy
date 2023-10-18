@@ -27,7 +27,7 @@
               </a>
             </c:if>
               <c:if test="${!empty sid && sid ne 'admin'}">
-                <a href="${path0 }/user/logout">
+                <a href="${path0 }/user/logout.do">
                   <i class="icofont-login has-text-white"> 로그아웃</i>
                 </a>
                 <a href="${path0 }/course/mypageCourse?complete=0">
@@ -89,6 +89,7 @@
               <div class="navbar-dropdown">
                 <a class="navbar-item" href="${path0 }/course/list.do">강의 게시판</a>
                 <a class="navbar-item" href="#">개강 일정</a>
+                <a class="navbar-item" href="${path0 }/course/bookList">교재 자료실</a>
               </div>
             </li>
 

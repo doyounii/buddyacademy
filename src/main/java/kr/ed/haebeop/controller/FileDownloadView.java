@@ -13,16 +13,16 @@ import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.Map;
 
-public class FileDownLoadView extends AbstractView {
+public class FileDownloadView extends AbstractView {
 
-    public FileDownLoadView() {
+    public FileDownloadView() {
         setContentType("apllication/download; charset=UTF-8");
     }
 
     @Override
     protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
         ServletContext ctx = getServletContext();
-        String realPath = ctx.getRealPath("/buddybuddy_war/resources/upload");
+        String realPath = ctx.getRealPath("/team24_war/resources/upload");
 
         Map<String, Object> fileInfo = (Map<String, Object>) model.get("downloadFile"); // 전송받은 모델(파일 정보)
 
