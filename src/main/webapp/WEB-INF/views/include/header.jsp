@@ -89,7 +89,7 @@
               <div class="navbar-dropdown">
                 <a class="navbar-item" href="${path0 }/course/list.do">강의 게시판</a>
                 <a class="navbar-item" href="#">개강 일정</a>
-                <a class="navbar-item" href="${path0 }/course/bookList">교재 자료실</a>
+                <a class="navbar-item" href="${path0 }/book/bookList">교재 자료실</a>
               </div>
             </li>
 

@@ -624,3 +624,5 @@ CREATE TABLE bookboard (
 	regdate DATETIME DEFAULT CURRENT_TIMESTAMP(),   -- 작성일
 	visited INT DEFAULT 0   -- 조회수
 );
+INSERT INTO bookboard VALUES(DEFAULT,"강의 자료!!!", "자료내용", DEFAULT, DEFAULT)
+INSERT INTO bookobj VALUES(DEFAULT, 1, "D:\doyouni\server\apache-tomcat-9.0.78-windows-x64\apache-tomcat-9.0.78\webapps\team24_war\resources\upload", "스크린샷 2023-07-17 091159.png","D:\doyouni\server\apache-tomcat-9.0.78-windows-x64\apache-tomcat-9.0.78\webapps\team24_war\resources\upload\스크린샷 2023-07-17 091159.png","4499", "Wed Oct 18 15:20:39 KST 2023" )
