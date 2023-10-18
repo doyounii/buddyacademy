@@ -76,5 +76,15 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Enroll> enrollList() { return courseMapper.enrollList(); }
+    public List<Enroll> enrollList(Page page) { return courseMapper.enrollList(page); }
+
+    @Override
+    public void enrollDelete(int eno) {
+        courseMapper.enrollDelete(eno);
+    }
+
+    @Override
+    public int countEnroll(Page page) {
+        return courseMapper.countEnroll(page);
+    }
 }

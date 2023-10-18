@@ -362,4 +362,15 @@ DEFAULT,
 'leeeunyoung'
 );
 
-SELECT * FROM enroll;
+SELECT c.cno, c.course_name, c.start_date, c.end_date, c.imgsrc1, e.eno, e.id, e.complete, u.name
+FROM course c
+INNER JOIN enroll e ON c.cno = e.cno 
+INNER JOIN user u ON e.id = u.id
+WHERE u.id = 'admin' AND e.complete = 1;
+
+SELECT e.eno, e.cno, c.course_name, u.name,e.id, e.complete, e.book, e.enroll_price 
+FROM enroll e INNER JOIN course c ON e.cno = c.cno INNER JOIN user u ON e.id = u.id;
+
+DELETE FROM enroll WHERE eno =#{eno }
+
+select count(*) from enroll
