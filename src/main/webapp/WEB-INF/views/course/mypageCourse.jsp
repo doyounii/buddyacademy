@@ -82,32 +82,6 @@
                 </div>
             </section>
             <section class="info-tiles">
-                <%--                <div class="tile is-ancestor has-text-centered">--%>
-                <%--                    <div class="tile is-parent">--%>
-                <%--                        <article class="tile is-child box">--%>
-                <%--                            <p class="title">439k</p>--%>
-                <%--                            <p class="subtitle">Users</p>--%>
-                <%--                        </article>--%>
-                <%--                    </div>--%>
-                <%--                    <div class="tile is-parent">--%>
-                <%--                        <article class="tile is-child box">--%>
-                <%--                            <p class="title">59k</p>--%>
-                <%--                            <p class="subtitle">Products</p>--%>
-                <%--                        </article>--%>
-                <%--                    </div>--%>
-                <%--                    <div class="tile is-parent">--%>
-                <%--                        <article class="tile is-child box">--%>
-                <%--                            <p class="title">3.4k</p>--%>
-                <%--                            <p class="subtitle">Open Orders</p>--%>
-                <%--                        </article>--%>
-                <%--                    </div>--%>
-                <%--                    <div class="tile is-parent">--%>
-                <%--                        <article class="tile is-child box">--%>
-                <%--                            <p class="title">19</p>--%>
-                <%--                            <p class="subtitle">Exceptions</p>--%>
-                <%--                        </article>--%>
-                <%--                    </div>--%>
-                <%--                </div>--%>
                 <c:if test="${enrollNum ne null}">
                     <p>학습 현황 그래프</p>
                     <progress class="progress  is-large is-success" style="height:2rem;" value="${100 - enrollNum*size }" max="100"></progress>
