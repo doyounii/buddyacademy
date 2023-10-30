@@ -626,3 +626,32 @@ CREATE TABLE bookboard (
 );
 INSERT INTO bookboard VALUES(DEFAULT,"강의 자료!!!", "자료내용", DEFAULT, DEFAULT)
 INSERT INTO bookobj VALUES(DEFAULT, 1, "D:\doyouni\server\apache-tomcat-9.0.78-windows-x64\apache-tomcat-9.0.78\webapps\team24_war\resources\upload", "스크린샷 2023-07-17 091159.png","D:\doyouni\server\apache-tomcat-9.0.78-windows-x64\apache-tomcat-9.0.78\webapps\team24_war\resources\upload\스크린샷 2023-07-17 091159.png","4499", "Wed Oct 18 15:20:39 KST 2023" )
+
+
+CREATE TABLE COMMENT(
+dno INT PRIMARY KEY AUTO_INCREMENT, -- 댓글 번호
+author VARCHAR(20) NOT NULL, -- 댓글 작성자
+content VARCHAR(500) NOT NULL, -- 댓글 내용
+regdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 댓글 등록일
+par INT(10) NOT NULL -- 해당 후기 번호
+);
+
+select * from user where id="park123"
+
+UPDATE user SET pt = 500000 WHERE id ="park123"
+UPDATE custom SET pw='PiaaQ0NRSE2oqCNJjnWMILh7I0NxM41bVTR9vU1Rp60Jy8aFU0UvVRrHZcSHKa2X3xBYxg==' WHERE pw='1234';
+update course set curr_num =curr_num-1 where cno=7
+        
+ SELECT c.cno, c.course_name, c.start_date, c.end_date, c.imgsrc1, e.eno, e.id, e.complete, u.name, e.cancel
+        FROM course c
+                 INNER JOIN enroll e ON c.cno = e.cno
+                 INNER JOIN user u ON e.id = u.id
+        WHERE u.id = "park123" and e.complete = 0
+        
+SELECT COUNT(*) FROM enroll e
+            INNER JOIN course c ON e.cno = c.cno INNER JOIN user u ON e.id = u.id WHERE e.cancel =1
+            
+            
+            SELECT e.eno, e.cno, c.course_name, u.name,e.id, e.complete, e.book, e.enroll_price, e.cancel, u.pt
+        FROM enroll e INNER JOIN course c ON e.cno = c.cno INNER JOIN user u ON e.id = u.id 
+        COMMIT;
