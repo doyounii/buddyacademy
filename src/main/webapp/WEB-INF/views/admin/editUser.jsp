@@ -7,9 +7,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>메인</title>
   <jsp:include page="../include/head.jsp" />
 
@@ -60,7 +57,7 @@
       <div class="columns">
         <div class="column is-6">
           <header class="card-header" style="margin-bottom: 20px; margin-top: 20px; ">
-            <strong style="color:#00A2FF; "> ${user.name} &nbsp; </strong> 회원 정보 수정
+            <strong style="color:orange; "> ${user.name} &nbsp; </strong> 회원 정보 수정
           </header>
           <div class="card events-card">
             <div class="from_wrap">

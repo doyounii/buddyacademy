@@ -1,43 +1,28 @@
 package kr.ed.haebeop.config;
+//주입 설정 및 빈 등록 파일 : ApplicationConfig.java
 
-import kr.ed.haebeop.persistence.FilePerisistence;
-import kr.ed.haebeop.persistence.FilePersistenceImpl;
-import kr.ed.haebeop.persistence.UserPersistence;
-import kr.ed.haebeop.persistence.UserPersistenceImpl;
+import kr.ed.haebeop.repository.FileRepository;
+import kr.ed.haebeop.repository.FileRepositoryImpl;
 import kr.ed.haebeop.repository.TestRepository;
-import kr.ed.haebeop.repository.TestRepositorympl;
+import kr.ed.haebeop.repository.TestRepositoryImpl;
 import kr.ed.haebeop.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-//컨트롤러나 서비스, 맵퍼,
+//컨트롤러나 서비스, 맴퍼, 레포시토리에서 사용할 Bean을 등록
 @Configuration
 @ComponentScan(basePackages = "kr.ed.haebeop")
 public class ApplicationConfig {
     @Bean
-    public TestRepository testRepository() {
-        return new TestRepositorympl();
-    }
-
+    public TestService testService(){ return new TestServiceImpl(); }
     @Bean
-    public TestService testService() {
-        return new TestServiceImpl();
-    }
-
+    public TestRepository testRepository(){ return new TestRepositoryImpl(); }
     @Bean
-    public UserPersistence userPersistence() {return new UserPersistenceImpl();}
-
+    public UserService userService() { return new UserServiceImpl(); }
+    // file
     @Bean
-    public UserService userService() {return new UserServiceImpl();}
-
+    public FileRepository fileRepository() {return new FileRepositoryImpl();}
     @Bean
-    public FilePerisistence filePerisistence() {return new FilePersistenceImpl();}
-
-    @Bean
-    public FileService fileService() {return  new FileServiceImpl();}
-    @Bean(name = "uploadPath")
-    public String uploadPath() {
-        return "D:\\doyouni\\buddybuddy\\src\\main\\webapp\\resources\\upload";
-    }
+    public FileService fileService() { return new FileServiceImpl(); }
 }

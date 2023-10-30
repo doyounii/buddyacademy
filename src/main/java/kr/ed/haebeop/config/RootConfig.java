@@ -1,4 +1,5 @@
 package kr.ed.haebeop.config;
+//applicationContext.xml을 대신하는 RootConfig.java
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -13,54 +14,53 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import javax.sql.DataSource;
 //applicationContext.xml을 대신하는 RootConfig.java : kr.ed.haebeop.config
-//빈을 설정하는 파일로 외부 자원과 연동하는 부분을 설정
 @Configuration
-@ComponentScan(basePackages = {"kr.ed.haebeop.service", "kr.ed.haebeop.repository"})
-@MapperScan( basePackages = {"kr.ed.haebeop.persistence"}) //MyBatis-Spring
+@ComponentScan(basePackages = {"kr.ed.haebeop.service" , "kr.ed.haebeop.repository"})
+@MapperScan( basePackages = {"kr.ed.haebeop.persistence"}) // MyBatis-Spring
 public class RootConfig {
     @Autowired
     private ApplicationContext applicationContext;
-
     @Bean
-    public SqlSessionTemplate sqlSessionTemplate() throws Exception {
-        return new SqlSessionTemplate((SqlSessionFactory) sqlSessionFactoryBean());
+    public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) throws Exception {   //SqlSession 설정
+        return new SqlSessionTemplate(sqlSessionFactory);
     }
-
-    //sql을 대신할 my-batis 설정 : mybatis-spring-1.3.2.jar의 세션팩토리빈클래스 연결
     @Bean
-    public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
+    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception { //SqlFactory 설정
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setConfigLocation(applicationContext.getResource("classpath:/mybatis-config.xml"));
-        sqlSessionFactory.setMapperLocations(applicationContext.getResources("classpath*:/" +
-                "mappers/**/*Mapper.xml"));
+        sqlSessionFactory.setMapperLocations(applicationContext.getResources("classpath*:/mappers/**/*Mapper.xml"));
         sqlSessionFactory.setDataSource(dataSource());
         return (SqlSessionFactory) sqlSessionFactory.getObject();
     }
-
-    //트랜잭션 설정
     @Bean
-    public DataSourceTransactionManager transactionManager() {
+    public DataSourceTransactionManager transactionManager() {  //트랜잭션 설정
         DataSourceTransactionManager transaction = new DataSourceTransactionManager();
         transaction.setDataSource(dataSource());
         return transaction;
     }
-
-    //spring-jdbc-5.3.20.jar 안의 드라이버매니저 연결
     @Bean
-    public BasicDataSource dataSource() { //데이터 베이스 설정
+    public BasicDataSource dataSource() {   //데이터베이스 설정
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-        basicDataSource.setUrl("jdbc:mariadb://localhost:3306/haebeop");
-        basicDataSource.setUsername("root");
-        basicDataSource.setPassword("1234");
+        basicDataSource.setUrl("jdbc:mariadb://10.41.1.198/team24");
+        basicDataSource.setUsername("team24");
+        basicDataSource.setPassword("team24");
         return basicDataSource;
     }
     @Bean
-    public CommonsMultipartResolver multipartResolver() { //멀티파트 파일 업로드 설정
+    public CommonsMultipartResolver multipartResolver() {   //멀티파트 파일 업로드 설정
         CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
-        commonsMultipartResolver.setMaxInMemorySize(100000000);
         commonsMultipartResolver.setMaxUploadSize(100000000);
+        commonsMultipartResolver.setMaxInMemorySize(100000000);
         return commonsMultipartResolver;
     }
+
+    @Bean(name = "uploadPath")
+    public String uploadPath() { // 멀티파트 업로드 디렉토리 지정
+        return "/Users/otaehun/Desktop/team04/team24/src/main/webapp/resources/upload";
+    }
+
+    //HikariCP 를 활용하는 방안은 가장 밖에 있는 RootConfig2.java 파일을 참조할 것.
 }

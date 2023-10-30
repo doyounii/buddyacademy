@@ -29,7 +29,7 @@
       font-family: 'Nanum Gothic Coding', monospace;
     }
 
-    .card-header { color:#00A2FF; font-size: 1.2em; margin: 0 auto; }
+    .card-header { color:orange; font-size: 1.2em; margin: 0 auto; }
     .container { margin-top: 20px; }
 
     .title, .hero, .hero, .welcome, .subtitle{

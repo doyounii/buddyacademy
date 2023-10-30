@@ -45,6 +45,7 @@ public class NoticeController {
         model.addAttribute("keyword", keyword);
         model.addAttribute("page", page);
         model.addAttribute("curPage", curPage);
+        model.addAttribute("total", total);
 
         List<Notice> noticeList = noticeService.noticeList(page);
         model.addAttribute("noticeList", noticeList);
@@ -63,6 +64,9 @@ public class NoticeController {
 
     @GetMapping("insert.do")
     public String insertForm(HttpServletRequest request, Model model) throws Exception {
+        String site = request.getParameter("site");
+        model.addAttribute("site", site);
+
         return "/notice/noticeInsert";
     }
 
@@ -72,14 +76,20 @@ public class NoticeController {
         domain.setTitle(request.getParameter("title"));
         domain.setContent(request.getParameter("content"));
         noticeService.noticeInsert(domain);
-        return "redirect:list.do";
+
+        String site = request.getParameter("site");
+        if(site.equals("admin")){
+            return "redirect:/admin/notice/list.do";
+        } else {
+            return "redirect:/notice/list.do";
+        }
     }
 
     @GetMapping("delete.do")
     public String noticeDelete(HttpServletRequest request, Model model) throws Exception {
         int no = Integer.parseInt(request.getParameter("no"));
         noticeService.noticeDelete(no);
-        return "redirect:list.do";
+        return "redirect:/admin/notice/list.do";
     }
 
     @GetMapping("edit.do")
@@ -98,7 +108,7 @@ public class NoticeController {
         domain.setTitle(request.getParameter("title"));
         domain.setContent(request.getParameter("content"));
         noticeService.noticeEdit(domain);
-        return "redirect:list.do";
+        return "redirect:/admin/notice/list.do";
     }
 
     //ckeditor를 이용한 이미지 업로드

@@ -57,18 +57,20 @@ p {
 }
 
 .navbar-toggle .icon-bar {
-  background: #008CD6;
+  background: orange;
 }
 
+/*
 input[type=email], input[type=password], input[type=text], input[type=tel] {
   box-shadow: none;
-  height: 45px;
+  height: 40px;
+
   outline: none;
   font-size: 14px;
 }
 input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, input[type=tel]:focus {
   box-shadow: none;
-  border: 1px solid #008CD6;
+  border: 1px solid orange;
 }
 
 .input {
@@ -79,8 +81,9 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 .input:focus {
   box-shadow: none;
-  border: 1px solid #008CD6;
+  border: 1px solid orange;
 }
+*/
 
 .py-7 {
   padding: 7rem 0px;
@@ -108,8 +111,8 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .btn-main, .btn-small {
-  background: #008CD6;
-  border-color: #008CD6;
+  background: orange;
+  border-color: orange;
   color: #fff;
   transition: all 0.2s ease;
 }
@@ -125,19 +128,19 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   transition: all 0.2s ease;
 }
 .btn-main-2:hover {
-  background: #008CD6;
-  border-color: #008CD6;
+  background: orange;
+  border-color: orange;
   color: #fff;
 }
 
 .btn-solid-border {
-  border: 2px solid #008CD6;
+  border: 2px solid orange;
   background: transparent;
   color: #232323;
 }
 .btn-solid-border:hover {
-  border: 2px solid #008CD6;
-  background: #008CD6;
+  border: 2px solid orange;
+  background: orange;
 }
 
 .btn-solid-main-2 {
@@ -182,7 +185,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .bg-primary {
-  background: #008CD6;
+  background: orange;
 }
 
 .bg-primary-dark {
@@ -223,7 +226,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .subtitle {
-  color: #008CD6;
+  color: orange;
   font-size: 14px;
   letter-spacing: 1px;
 }
@@ -260,7 +263,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .text-color {
-  color: #008CD6;
+  color: orange;
 }
 
 .text-black {
@@ -299,7 +302,7 @@ a {
 }
 
 a:focus, a:hover {
-  color: #008CD6;
+  color: orange;
   text-decoration: none;
 }
 
@@ -549,7 +552,7 @@ ul.list-styled {
   }
 }
 #navbar .navbar-link:hover, #navbar .navbar-link:focus {
-  color: #008CD6;
+  color: orange;
 }
 #navbar .btn:hover {
   color: #fff;
@@ -558,7 +561,7 @@ ul.list-styled {
 .header-top {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   font-size: 14px;
-  background: #00A2FF;
+  background: orange;
 }
 @media (max-width: 1023px) {
   .header-top {
@@ -567,7 +570,7 @@ ul.list-styled {
 }
 .header-top .top-btn {
   padding: 14px 25px;
-  background: #008CD6;
+  background: orange;
   line-height: 40px;
   color: #fff;
 }
@@ -609,7 +612,7 @@ ul.list-styled {
   }
 }
 .header-top .header-top-info a i {
-  color: #008CD6;
+  color: orange;
 }
 .header-top .btn {
   font-size: 12px !important;
@@ -675,7 +678,7 @@ ul.list-styled {
   text-align: center;
 }
 .navbar-dropdown .navbar-item:hover {
-  background: #008CD6 !important;
+  background: orange !important;
   color: #fff !important;
 }
 @media (max-width: 1023px) {
@@ -781,7 +784,7 @@ ul.list-styled {
   text-align: center;
   border-radius: 100%;
   display: flex;
-  background: #008CD6;
+  background: orange;
   color: #fff;
   align-items: center;
   justify-content: center;
@@ -847,7 +850,7 @@ ul.list-styled {
 }
 .volunteer-form .btn:hover {
   color: #fff;
-  border-color: #008CD6;
+  border-color: orange;
 }
 
 .clients-wrap a {
@@ -919,7 +922,7 @@ ul.list-styled {
 .error-content i {
   width: 120px;
   height: 120px;
-  background: #008CD6;
+  background: orange;
   color: #fff;
   display: inline-block;
   border-radius: 100%;
@@ -1033,7 +1036,7 @@ ul.list-styled {
 }
 .feature-inner i {
   font-size: 50px;
-  color: #008CD6;
+  color: orange;
 }
 .feature-inner h4 {
   margin-bottom: 0px;
@@ -1059,7 +1062,7 @@ ul.list-styled {
 .counter-item h3 {
   margin-bottom: 0px;
   font-family: "Montserrat", sans-serif;
-  color: #008CD6;
+  color: orange;
 }
 
 .bg-counter-2 {
@@ -1182,7 +1185,7 @@ ul.list-styled {
   border: 1px solid transparent;
 }
 .donation .donation-form .input:focus {
-  border-color: #008CD6;
+  border-color: orange;
 }
 .donation .donation-form .form-group {
   margin-bottom: 25px;
@@ -1199,7 +1202,7 @@ ul.list-styled {
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
 .volunteer-form .input:focus {
-  border-color: #008CD6;
+  border-color: orange;
 }
 
 .event-item {
@@ -1341,7 +1344,7 @@ ul.list-styled {
   transition: all 0.4s ease 0s;
 }
 .blog-item-content h3 a:hover {
-  color: #008CD6 !important;
+  color: orange !important;
 }
 
 .blog-item {
@@ -1370,8 +1373,8 @@ ul.list-styled {
   text-transform: capitalize;
 }
 .tags a:hover {
-  background-color: #008CD6;
-  border-color: #008CD6;
+  background-color: orange;
+  border-color: orange;
   color: white;
 }
 
@@ -1433,7 +1436,7 @@ ul.list-styled {
   margin: 10px 0;
 }
 .share-option a:hover {
-  background: #008CD6;
+  background: orange;
   color: #fff;
 }
 
@@ -1455,7 +1458,7 @@ h3.quote::before {
   content: "";
   width: 55px;
   height: 2px;
-  background: #008CD6;
+  background: orange;
   position: absolute;
   top: 25px;
   left: 0;
@@ -1552,7 +1555,7 @@ h3.quote::before {
   font-weight: 500;
 }
 .post-comments .comment-author a {
-  color: #008CD6;
+  color: orange;
   font-size: 14px;
   text-transform: uppercase;
 }
@@ -1563,7 +1566,7 @@ h3.quote::before {
   font-size: 12px;
 }
 .post-comments .comment-button {
-  color: #008CD6;
+  color: orange;
   display: inline-block;
   margin-left: 5px;
   font-size: 12px;
@@ -1573,7 +1576,7 @@ h3.quote::before {
   display: inline-block;
 }
 .post-comments .comment-button:hover {
-  color: #008CD6;
+  color: orange;
 }
 
 .post-excerpt {
@@ -1591,7 +1594,7 @@ h3.quote::before {
 .post-excerpt blockquote.quote-post p {
   line-height: 30px;
   font-size: 20px;
-  color: #008CD6;
+  color: orange;
 }
 
 .single-blog {
@@ -1618,7 +1621,7 @@ h3.quote::before {
   color: #000;
 }
 .next-prev a:hover {
-  color: #008CD6;
+  color: orange;
 }
 .next-prev .prev-post i {
   margin-right: 10px;
@@ -1637,7 +1640,7 @@ h3.quote::before {
   font-size: 16px;
 }
 .social-profile ul li a i:hover {
-  color: #008CD6;
+  color: orange;
 }
 
 .comments-section {
@@ -1681,7 +1684,7 @@ h3.quote::before {
   margin-bottom: 8px;
 }
 .comment-wrap .media .media-heading a {
-  color: #008CD6;
+  color: orange;
   font-size: 13px;
 }
 .comment-wrap .media .comment-meta {
@@ -1702,7 +1705,7 @@ h3.quote::before {
 }
 .comment-reply-form input:focus, .comment-reply-form textarea:focus {
   box-shadow: none;
-  border: 1px solid #008CD6;
+  border: 1px solid orange;
 }
 .comment-reply-form textarea, .comment-reply-form .btn-main, .comment-reply-form .btn-small {
   height: auto;
@@ -1777,7 +1780,7 @@ h3.quote::before {
   color: rgba(255, 255, 255, 0.6);
 }
 .footer-socials li a:hover {
-  background: #008CD6;
+  background: orange;
   color: #fff;
 }
 
@@ -1788,10 +1791,10 @@ h3.quote::before {
   color: rgba(255, 255, 255, 0.7);
 }
 .footer-menu li a:hover {
-  color: #008CD6;
+  color: orange;
 }
 .footer-menu li a i {
-  color: #008CD6;
+  color: orange;
   margin-right: 9px;
 }
 

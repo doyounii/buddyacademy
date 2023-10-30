@@ -21,4 +21,14 @@ public class Course {
     private int book_price;
     private String imgsrc1;
     private String imgsrc2;
+
+//    public boolean isFinished() {
+//        LocalDate currentDate = LocalDate.now();
+//        LocalDate endDate = LocalDate.parse(this.end_date);
+//        return currentDate.isAfter(endDate);
+//    }
+//
+//    public boolean isClosed() {
+//        return this.curr_num >= this.total_num;
+//    }
 }

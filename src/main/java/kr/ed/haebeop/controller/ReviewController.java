@@ -4,6 +4,7 @@ import kr.ed.haebeop.domain.Comment;
 import kr.ed.haebeop.domain.Review;
 import kr.ed.haebeop.service.CommentService;
 import kr.ed.haebeop.service.ReviewService;
+import kr.ed.haebeop.util.BadWordFilter;
 import kr.ed.haebeop.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.util.List;
 import java.util.UUID;
+
+import static java.lang.System.out;
 
 @Controller
 @RequestMapping("/review/")
@@ -53,6 +56,7 @@ public class ReviewController {
         model.addAttribute("keyword", keyword);
         model.addAttribute("page", page);
         model.addAttribute("curPage", curPage);
+        model.addAttribute("total", total);
 
         List<Review> reviewList = reviewService.reviewList(page);
         model.addAttribute("reviewList", reviewList);
@@ -81,12 +85,26 @@ public class ReviewController {
 
     @PostMapping("insert.do")
     public String reviewInsert(HttpServletRequest request, Model model) throws Exception {
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String msg = "";
         Review domain = new Review();
-        domain.setTitle(request.getParameter("title"));
-        domain.setContent(request.getParameter("content"));
-        domain.setId((String) session.getAttribute("sid"));
-        reviewService.reviewInsert(domain);
-        return "redirect:list.do";
+
+        BadWordFilter filter = new BadWordFilter();
+
+        if (filter.check(title) || filter.check(content)) {
+            msg = "제목 또는 내용에 비속어를 사용할 수 없습니다.";
+            model.addAttribute("title", title);
+            model.addAttribute("content", content);
+            model.addAttribute("msg", msg);
+            return "/review/reviewInsert";
+        } else {
+            domain.setTitle(title);
+            domain.setContent(content);
+            domain.setId((String) session.getAttribute("sid"));
+            reviewService.reviewInsert(domain);
+            return "redirect:list.do";
+        }
     }
 
     @GetMapping("delete.do")
@@ -107,12 +125,28 @@ public class ReviewController {
     @PostMapping("edit.do")
     public String reviewEdit(HttpServletRequest request, Model model) throws Exception {
         int no = Integer.parseInt(request.getParameter("no"));
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String msg = "";
+
         Review domain = new Review();
-        domain.setNo(no);
-        domain.setTitle(request.getParameter("title"));
-        domain.setContent(request.getParameter("content"));
-        reviewService.reviewEdit(domain);
-        return "redirect:list.do";
+
+        BadWordFilter filter = new BadWordFilter();
+
+        if (filter.check(title) || filter.check(content)) {
+            msg = "제목 또는 내용에 비속어를 사용할 수 없습니다.";
+            domain.setTitle(title);
+            domain.setContent(content);
+            model.addAttribute("domain", domain);
+            model.addAttribute("msg", msg);
+            return "/review/reviewEdit";
+        } else {
+            domain.setNo(no);
+            domain.setTitle(title);
+            domain.setContent(content);
+            reviewService.reviewEdit(domain);
+            return "redirect:list.do";
+        }
     }
 
     //ckeditor를 이용한 이미지 업로드
@@ -180,7 +214,7 @@ public class ReviewController {
 
         //서버에 저장된 이미지 경로
         String path = "E:\\springframework\\pro04_2\\src\\main\\webapp\\resources\\upload" + "ckImage/";    // 저장된 이미지 경로
-        System.out.println("path:" + path);
+        out.println("path:" + path);
         String sDirPath = path + uid + "_" + fileName;
 
         File imgFile = new File(sDirPath);

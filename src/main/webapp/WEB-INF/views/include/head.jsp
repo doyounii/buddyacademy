@@ -44,6 +44,8 @@
 <link rel="stylesheet" href="${path0}/resources/css/ft.css" />
 <link rel="stylesheet" href="${path0}/resources/css/styles2.css">
 
+<%-- fullcalendar css --%>
+<link rel="stylesheet" href="${path0}/resources/css/fullcalendar_5_10_1.css">
 
 <!-- Essential Scripts =====================================-->
 <!-- Main jQuery -->

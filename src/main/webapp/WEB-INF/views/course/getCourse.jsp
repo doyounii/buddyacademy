@@ -11,13 +11,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>${course.course_name }</title>
     <!-- 헤드 부분 인클루드 -->
-    <jsp:include page="../include/head.jsp"></jsp:include>
+    <jsp:include page="../include/head.jsp" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <style>
         .content ul {
             list-style-type: none;
@@ -47,10 +45,10 @@
         }
         .card {
             border-radius: 20px;
-            border: 1px solid #008CD6;
+            border: 1px solid orange;
         }
         .menu .box {
-            border: 1px solid #008CD6;
+            border: 1px solid orange;
             border-radius: 20px;
             padding: 10px;
             color: black;
@@ -98,11 +96,11 @@
         }
         .conwrap .box {
             margin-bottom: 50px;
-            background-color: #008CD6;
+            background-color: orange;
         }
         .card:hover {
             transform: initial;
-            border-top: 0;
+            /*border-top: 0;*/
         }
         .price_h4 {
             position: relative;
@@ -120,13 +118,13 @@
             font-weight: 400;
             line-height: 1;
             display: block;
-            color: #008CD6;
+            color: orange;
         }
         .price_in {
             padding: 30px 30px 0px 30px;
         }
         #course_price {
-            color: #008CD6;
+            color: orange;
         }
         .total {
             background: #fff;
@@ -182,7 +180,7 @@
         }
         #total_price {
             font-size: 1.14rem;
-            color: #008CD6;
+            color: orange;
         }
         .applyBtn {
             clear: both;
@@ -204,7 +202,7 @@
             letter-spacing: -0.5pt;
             font-weight: bold;
             background-color: #fff;
-            color: #008CD6;
+            color: orange;
             white-space: nowrap;
             font-size: 16px;
         }
@@ -220,7 +218,7 @@
             letter-spacing: -0.5pt;
             font-weight: bold;
             background-color: #fff;
-            color: #008CD6;
+            color: orange;
             white-space: nowrap;
             font-size: 16px;
         }
@@ -229,7 +227,7 @@
         }
         .applyBtn #apply {
             margin-right: 4px;
-            background-color: #008CD6;
+            background-color: orange;
             color: #fff;
         }
         .breadcrumb a {
@@ -242,6 +240,12 @@
             border-radius: 20px;
             background-color: #f1f4f9;
         }
+        .textbook-price {
+            font-size: 1rem;
+            color: orange;
+            margin-left: 0.1rem;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -250,10 +254,9 @@
 <nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
     <ul class="mr-5">
         <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
-        <li><a href="${path1}/course/list.do">수강신청</a></li>
+        <li><a href="${path1}/course/list.do">강의수강</a></li>
         <li class="is-active"><a href="${path1 }/course/getCourse?cno=${course.cno }" aria-current="page">수강신청</a></li>
     </ul>
-
     <p class="title has-text-centered mt-1 mb-2">수강신청</p>
 </nav>
 <div class="container is-fullhd" style="min-height: 1000px;">
@@ -268,7 +271,7 @@
                 <div class="card-content">
                     <div class="media">
                         <div class="media-content has-text-centered">
-                            <h1 class="title article-title">${course.course_name }</h1>
+                            <img src="${path1 }/resources/upload/${course.imgsrc1 }" alt="강의사진" style="border-radius: 20px; width:300px; max-height: 200px;" >
                         </div>
                     </div>
                     <hr>
@@ -281,6 +284,22 @@
                     </div>
                 </div>
             </div>
+
+            <div class="book-info mt-6 ml-2">
+                <span class="has-text-black is-size-5 has-text-weight-semibold">교재 정보</span>
+                <div class="columns mt-4 is-vcentered">
+                    <div class="column is-3">
+                        <img src="${path1 }/resources/upload/${course.imgsrc2 }" alt="교재사진" style="border-radius: 20px; width:300px; max-height: 200px;" >
+                    </div>
+                    <div class="column is-9 ml-1">
+                        <p class="has-text-weight-semibold has-text-black is-size-5">${course.book_name}</p>
+                        <br>
+                        <p class="textbook-price"><fmt:formatNumber value="${course.book_price }" pattern="#,###" />원</p>
+                    </div>
+                </div>
+
+            </div>
+
 
         </div>
         <div class="column is-4">
@@ -315,7 +334,7 @@
                                 <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
                                     <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
                                         <p class="price_h4">수강료</p>
-                                        <span class="pointColor price" id="price"><strong id="course_price" class="eng">${course.price}원</strong></span>
+                                        <span class="pointColor price" id="price"><strong id="course_price" class="eng"><fmt:formatNumber value="${course.price }" pattern="#,###" />원</strong></span>
                                     </div>
                                     <!--<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
                                         <div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 0px; top: 0px;">
@@ -333,22 +352,21 @@
                         <div class="total">
                             <p>
                                 <i>판매금액</i>
-                                <b id="sum_price">${course.price }원</b>
+                                <b id="sum_price"><fmt:formatNumber value="${course.price }" pattern="#,###" />원</b>
                             </p>
                             <p style="display: flex">
                                 <input type="checkbox" id="book_price" name="book_price" checked >
                                 <label for="book_price"><i> 교재금액</i></label>
-                                <b id="delivery_price">${course.book_price }원</b>
+                                <b id="delivery_price"><fmt:formatNumber value="${course.book_price }" pattern="#,###" />원</b>
                             </p>
                             <!--<p>
                                 <i>할인금액</i>
                                 <b id="discount_price" class="red">0원</b>
                             </p>-->
-                            <h4><i style="margin-top: 8px;">총 결제금액</i><span class="pointColor price"><strong id="total_price" class="eng">${total_price }원</strong></span></h4>
+                            <h4><i style="margin-top: 8px;">총 결제금액</i><span class="pointColor price"><strong id="total_price" class="eng"><fmt:formatNumber value="${total_price }" pattern="#,###" />원</strong></span></h4>
                         </div>
                         <!-- 신청 버튼 -->
                         <div class="applyBtn">
-                            <a href="#" class="cart pointColor pointBorder"><i class="icofont-cart"></i> 장바구니</a>
                             <a id="apply" class="apply bgColor"><i class="icofont-pencil"></i> 수강신청</a>
                         </div>
                     </li>
@@ -365,13 +383,26 @@
     $(document).ready(function(){
         $("#book_price").change(function(){
             if($("#book_price").is(":checked")){
-                $('#total_price').text((${course.price }+${course.book_price })+'원');
+                $('#total_price').text((${course.book_price +course.price })+'원');
             } else {
                 $('#total_price').text(${course.price }+'원');
             }
         });
     });
+    $(document).ready(function(){
+        // 숫자 포맷 함수
+        function formatNumber(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
 
+        $("#book_price").change(function(){
+            if($("#book_price").is(":checked")){
+                $('#total_price').text(formatNumber(${course.book_price + course.price }) + '원');
+            } else {
+                $('#total_price').text(formatNumber(${course.price }) + '원');
+            }
+        });
+    });
     /*$(document).ready(function(){
             var price=$("#total_price").val();
             let fn3 = () =>  $.ajax({
@@ -384,7 +415,6 @@
             $("#apply").on("click", function() { fn3() });
     });
  */
-
     $(document).ready(function(){
         $("#apply").click(function(){
             // 회원만 수강 신청 가능
@@ -392,7 +422,10 @@
                 alert("수강신청은 로그인 후 가능합니다.");
                 window.location.href = '${path1}/user/loginForm';
             } else if (${sid ne null && isEnroll eq false }){
-                if (${course.curr_num == course.total_num }) {
+                if (new Date('${course.end_date}') < new Date()) {
+                    alert("이미 종강한 강의입니다.");
+                    window.location.href = '${path1}/course/list.do';
+                } else if (${course.curr_num == course.total_num }) {
                     alert("모집이 마감된 강의입니다.");
                     window.location.href = '${path1}/course/list.do';
                 } else {

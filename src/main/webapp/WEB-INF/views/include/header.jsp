@@ -1,8 +1,11 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="path0" value="${pageContext.request.contextPath }"/>
+<%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="java.util.*, java.lang.*" %>
+<%@ page import="java.text.*, java.net.InetAddress" %>
+<c:set var="path1" value="${pageContext.servletContext.contextPath }" />
 
 <header class="navigation">
   <div class="header-top">
@@ -12,109 +15,87 @@
         </div>
         <div class="column is-6-desktop is-8-tablet">
           <div class="header-top-right has-text-right-tablet has-text-centered-mobile">
-            <%--<a href="https://www.facebook.com/themefisher" target="_blank"><i class="icofont-facebook"></i></a>
-            <a href="https://github.com/themefisher/" target="_blank"><i class="icofont-github"></i></a>
-            <a href="#" target="_blank"><i class="icofont-linkedin"></i></a>--%>
-            <c:if test="${empty sid }">
-              <a href="${path0 }/user/loginForm">
-                <i class="icofont-login has-text-white"> 로그인</i>
-              </a>
-              <a href="${path0 }/user/agree">
-                <i class="icofont-user has-text-white"> 회원가입</i>
-              </a>
-              <a href="#">
-                <i class="icofont-google-map has-text-white"> 오시는길</i>
+            <c:if test="${sid.equals('admin')}">
+              <a href="${path1}/admin/userList.do">
+                <i class="icofont-settings has-text-white"> 관리자페이지</i>
               </a>
             </c:if>
-              <c:if test="${!empty sid && sid ne 'admin'}">
-                <a href="${path0 }/user/logout.do">
-                  <i class="icofont-login has-text-white"> 로그아웃</i>
-                </a>
-                <a href="${path0 }/course/mypageCourse?complete=0">
-                  <i class="icofont-user has-text-white"> 마이페이지</i>
-                </a>
-                <a href="#">
-                  <i class="icofont-google-map has-text-white"> 오시는길</i>
-                </a>
-                <a href="${path0 }/admin/list">
-                  <i class="icofont-google-map has-text-white"> 관리자 페이지</i>
-                </a>
-              </c:if>
-              <c:if test="${sid eq 'admin' }">
-                <a href="${path0 }/user/logout">
-                  <i class="icofont-login has-text-white"> 로그아웃</i>
-                </a>
-                <a href="${path0 }/course/mypageCourse?complete=0">
-                  <i class="icofont-user has-text-white"> 마이페이지</i>
-                </a>
-                <a href="${path0 }/admin/">
-                  <i class="icofont-google-map has-text-white"> 관리자 페이지</i>
-                </a>
-              </c:if>
-            <%--<a href="donation.html" class="top-btn">Donate Now</a>--%>
+            <c:if test="${empty sid }">
+              <a href="${path1 }/user/loginForm">
+                <i class="icofont-login has-text-white"> 로그인</i>
+              </a>
+              <a href="${path1 }/user/agree">
+                <i class="icofont-user has-text-white"> 회원가입</i>
+              </a>
+            </c:if>
+            <c:if test="${!empty sid && !sid.equals('admin') }">
+              <a href="${path1 }/user/getUser">
+                <i class="icofont-user has-text-white"> 마이페이지</i>
+              </a>
+              <a href="${path1 }/course/mypageCourse?complete=0">
+                <i class="icofont-ui-clip-board has-text-white"> 학습 현황</i>
+              </a>
+            </c:if>
+            <c:if test="${!empty sid}">
+              <a href="${path1 }/user/logout.do">
+                <i class="icofont-login has-text-white"> 로그아웃</i>
+              </a>
+            </c:if>
+            <a href="${path1 }/contact">
+              <i class="icofont-google-map has-text-white"> 오시는길</i>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
-  <div class="container" id="navbar-container">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav id="navbar" class="navbar main-nav">
+    <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
+        <a class="navbar-item" href="${path1}">
+          <img src="${path1}/resources/images/haebeop.png" alt="logo">
         </a>
-
-        <a
-                role="button"
-                class="navbar-burger"
-                aria-label="menu"
-                aria-expanded="false"
-                data-target="navbarBasicExample"
-        >
+        <button role="button" class="navbar-burger burger" data-hidden="true" data-target="navigation">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
-        </a>
+        </button>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start"></div>
+      <div class="navbar-menu mr-0" id="navigation">
+        <ul class="navbar-start" style="flex-grow: 1; justify-content: center;">
+          <li class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">강의수강</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="${path1}/course/list.do">수강신청</a>
+              <a class="navbar-item" href="${path1}/course/schedule.do">개강일정</a>
+            </div>
+          </li>
 
-        <div class="navbar-end">
-          <ul class="navbar-start" style="flex-grow: 1; justify-content: center;">
-            <li class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">수강신청</a>
-              <div class="navbar-dropdown">
-                <a class="navbar-item" href="${path0 }/course/list.do">강의 게시판</a>
-                <a class="navbar-item" href="#">개강 일정</a>
-                <a class="navbar-item" href="${path0 }/book/bookList">교재 자료실</a>
-              </div>
-            </li>
+          <li class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">시범강의</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="${path1}/video/list.do">시범강의</a>
+            </div>
+          </li>
 
-            <li class="navbar-item">
-              <a class="navbar-link" href="#">무료 강의</a>
-            </li>
+          <li class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">커뮤니티</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="${path1}/notice/list.do">공지사항</a>
+              <a class="navbar-item" href="${path1}/faq/list.do">자주 묻는 질문</a>
+              <a class="navbar-item" href="${path1}/review/list.do">후기</a>
+            </div>
+          </li>
 
-            <li class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">커뮤니티</a>
-              <div class="navbar-dropdown">
-                <a class="navbar-item" href="${path0 }/notice/list.do">공지사항</a>
-                <a class="navbar-item" href="#">자주 묻는 질문</a>
-                <a class="navbar-item" href="#">후기</a>
-              </div>
-            </li>
-
-            <li class="navbar-item">
-              <a class="navbar-link" href="${path0 }/file/filelist1.do">자료실</a>
-            </li>
-            <%--<li class="navbar-item">
-                <a class="navbar-link" href="contact.html">Contact</a>
-            </li>--%>
-          </ul>        </div>
+          <li class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">자료실</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="${path1}/file/list.do">자료실</a>
+            </div>
+          </li>
+        </ul>
       </div>
-    </nav>
-  </div>
-
+    </div>
+  </nav>
 </header>

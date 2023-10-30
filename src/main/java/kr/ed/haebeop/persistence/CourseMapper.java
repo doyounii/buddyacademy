@@ -12,7 +12,21 @@ import java.util.List;
 public interface CourseMapper {
     public List<Course> getCourseList(Page page);
 
+    public List<Course> getCoursesASC(Page page);
+
+    public List<Course> getCoursesDESC(Page page);
+
     public List<Course> courseList();
+
+    public List<Course> getUnfinishedCourses(Page page);
+
+    public List<Course> unfinishedCourses();
+
+    public List<Course> getNotFullCourses(Page page);
+
+    public List<Course> notFullCourses();
+
+    public List<Course> newCourses();
 
     public Course getCourse(int cno);
 
@@ -38,4 +52,9 @@ public interface CourseMapper {
     public List<Enroll> enrollList(Page page);
     public void enrollDelete(int eno);
     public int countEnroll(Page page);
+    public void updateUserPt(User user);
+    public void rollbackStudentNum(int cno);
+    public void cancel(int eno);
+    public List<Enroll> cancelList(Page page);
+    public int countCancel(Page page);
 }
